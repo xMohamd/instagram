@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Livewire\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', Home::class);
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/', Home::class)->name('Home');
+
+    // Posts
+    // Route::get('/posts');
+    // Route::post('/posts');
+    // Route::get('/posts/create');
+    // Route::get('/posts/{id}');
+    // Route::get('/posts/{id}/edit');
+    // Route::put('/posts/{id}');
+    // Route::delete('/posts/{id}');
+    // Route::post('/posts/{id}/comments');
+    // Route::delete('/posts/{id}/comments/{id}');
+    // Route::post('/posts/{id}/comments/{id}/likes');
+    // Route::delete('/posts/{id}/comments/{id}/likes');
+    // Route::post('/users/{id}/followers');
+    // Route::delete('/users/{id}/followers');
+    // Route::get('/explore', Explore::class)->name('explore');
+    // Route::get('/reels', LivewireReels::class)->name('reels');
+
+    // Route::get('/post/{post}', Page::class)->name('post'); => Require
+
+
+    // Route::get('/chat', Index::class)->name('chat');
+    // Route::get('/chat/{chat}', Main::class)->name('chat.main');
+
+    // Route::get('/profile/{user}', ProfileHome::class)->name('profile.home');
+    // Route::get('/profile/{user}/reels', Reels::class)->name('profile.reels');
+    // Route::get('/profile/{user}/saved', Saved::class)->name('profile.saved');
+
+});
+
+require __DIR__ . '/auth.php';
+Route::fallback(function () {
+    return "Page Not Found";
 });
