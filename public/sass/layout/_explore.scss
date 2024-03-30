@@ -1,0 +1,31 @@
+.explore_container{
+    padding: 2em;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    width: fit-content;
+    margin: auto;
+    .items_4{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        .item{
+            // max-width: 250px;
+            height: 250px;
+            @include small-screen{
+                max-height: 200px;
+            }
+        }
+    }
+    .item1{
+        height: 100%;
+        .item{
+            max-width: 290px;
+            height: 100%;
+            img{
+                height: 100%;
+            }
+        }
+    }
+
+}
