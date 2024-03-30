@@ -19,6 +19,9 @@ Route::get('/', function () {
 });
 
 
+Route::get('/', function () {
+    return 'Here there is should be the home page';
+})->middleware(['auth', 'verified'])->name('home');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
