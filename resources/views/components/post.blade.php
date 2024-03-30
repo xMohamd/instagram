@@ -8,16 +8,16 @@
   <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{{asset('images/img2.jpg')}}" class="d-block w-100" />
+        <img src="{{ asset('images/img2.jpg') }}" class="p-0 w-100 img-fluid img-thumbnail" style="height: 50vh"/>
       </div>
       <div class="carousel-item">
-        <img src="https://i.ibb.co/Jqh3rHv/img1.jpg" class="d-block w-100" />
+        <img src="https://i.ibb.co/Jqh3rHv/img1.jpg" class="p-0 w-100 img-fluid img-thumbnail" style="height: 50vh"/>
       </div>
       <div class="carousel-item">
-        <img src="{{asset('images/img2.jpg')}}" class="d-block w-100" />
+        <img src="{{ asset('images/img2.jpg') }}" class="p-0 w-100 img-fluid img-thumbnail" style="height: 50vh"/>
       </div>
       <div class="carousel-item">
-        <img src="https://i.ibb.co/Jqh3rHv/img1.jpg" class="d-block w-100" />
+        <img src="https://i.ibb.co/Jqh3rHv/img1.jpg" class="p-0 w-100 img-fluid img-thumbnail" style="height: 50vh"/>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="row">
-      <p><span class="fw-bold">15</span> likes</p>
+      <p><span class="fw-bold">15</span> likes, <span class="fw-bold">3</span> comments</p>
     </div>
     <p class="card-text">
       This is a wider card with supporting text below as a natural lead-in
