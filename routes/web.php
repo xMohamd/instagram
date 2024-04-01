@@ -18,11 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/', function () {
-    return 'Here there is should be the home page';
-})->middleware(['auth', 'verified'])->name('home');
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
