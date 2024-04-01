@@ -9,12 +9,31 @@ class PostRepository implements RepositoryContract
 {
     public function all()
     {
-        return Post::all();
+
+        return  Post::with([
+            'user',
+            'likedByUsers',
+            'comments',
+            'media',
+            'comments.user',
+        ])
+            ->withCount('likedByUsers', 'comments')
+            ->latest()
+            ->get();
     }
 
     public function paginate($perPage = 10)
     {
-        return Post::paginate($perPage);
+        return Post::with([
+            'user',
+            'likedByUsers',
+            'comments',
+            'media',
+            'comments.user',
+        ])
+            ->withCount('likedByUsers', 'comments')
+            ->latest()
+            ->simplePaginate($perPage);
     }
 
     public function find($id)
