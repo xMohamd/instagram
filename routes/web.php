@@ -20,9 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/', HomeController::class)->middleware(['auth', 'verified'])->name('home');
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
