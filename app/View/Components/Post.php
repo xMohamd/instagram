@@ -2,7 +2,6 @@
 
 namespace App\View\Components;
 
-use App\Models\Post as ModelsPost;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -13,7 +12,7 @@ class Post extends Component
      * Create a new component instance.
      */
     public function __construct(
-        // public ModelsPost $post
+        public $post
     ) {
     }
 
