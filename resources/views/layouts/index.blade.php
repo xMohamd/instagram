@@ -28,14 +28,23 @@
         <div id="search" class="search_section">
             <h2>Search</h2>
             <form method="post">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="searchInput">
             </form>
             <div class="find">
                 <div class="desc">
                     <h4>Recent</h4>
-                    <p><a href="#">Clear all</a></p>
+                    <p><a href="#" id="clearBtn">Clear all</a></p>
                 </div>
                 <div class="account">
+                    <div class="cart center-error">
+                        <div>
+                            <div class="info">
+                                <p class="searchError" style="text-align: center;">No Recent Searches....</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="account">
                     <div class="cart">
                         <div>
                             <div class="img">
@@ -50,7 +59,7 @@
                             <a href="#">X</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- search  -->
@@ -269,6 +278,7 @@
     <script src="./js/carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/home.js"></script>
 </body>
 
 </html>
