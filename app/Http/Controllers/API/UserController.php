@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use App\Contracts\UserRepository;
-use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -24,9 +24,9 @@ class UserController extends Controller
         //
     }
 
-    public function getUsers($username)
+    public function findByUsername($username)
     {
-        return response()->json($this->userRepository->getUsers($username));
+        return response()->json($this->userRepository->findByUsername($username));
     }
 
     /**

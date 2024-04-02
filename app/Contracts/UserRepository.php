@@ -31,7 +31,7 @@ class UserRepository implements RepositoryContract
     {
     }
 
-    public function getUsers($username)
+    public function findByUsername($username)
     {
         return User::where('username', 'LIKE', $username . '%')->get();
     }
