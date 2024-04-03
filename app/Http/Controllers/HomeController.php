@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-
     public function __construct(
         protected PostRepository $postRepository
     ) {
@@ -19,6 +18,7 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         $posts = $this->postRepository->paginate();
+
         return view('home', compact('posts'));
     }
 }
