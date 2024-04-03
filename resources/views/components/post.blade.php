@@ -1,5 +1,5 @@
 @php
-  $isLikedByUser = $post->likedByUsers->contains(auth()->user()) ? 'text-danger' : '';
+  $isLikedByUser = $post->likes->contains(auth()->user()) ? 'text-danger' : '';
   $isCommentedByUser = $post->comments->contains('user', auth()->user()) ? 'text-primary' : '';
 @endphp
 <div class="card p-0 border-0 rounded-0" style="max-width: 470px">
@@ -53,7 +53,7 @@
     </div>
     <div class="row">
       <p>
-        <span class="fw-bold">{{ $post->liked_by_users_count }}</span> likes,
+        <span class="fw-bold">{{ $post->likes_count }}</span> likes,
         <span class="fw-bold">{{ $post->comments_count }}</span> comments
       </p>
     </div>
@@ -112,7 +112,7 @@
                 </div>
                 <div class="row">
                   <p>
-                    <span class="fw-bold">{{ $post->liked_by_users_count }}</span> likes,
+                    <span class="fw-bold">{{ $post->likes_count }}</span> likes,
                     <span class="fw-bold">{{ $post->comments_count }}</span> comments
                   </p>
                 </div>
