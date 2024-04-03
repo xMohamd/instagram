@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="./css/navMenu.css">
     <link rel="stylesheet" href="./sass/vender/bootstrap.css">
     <link rel="stylesheet" href="./sass/vender/bootstrap.min.css">
     <link rel="stylesheet" href="./owlcarousel/owl.theme.default.min.css">
@@ -27,14 +28,23 @@
         <div id="search" class="search_section">
             <h2>Search</h2>
             <form method="post">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="searchInput">
             </form>
             <div class="find">
                 <div class="desc">
                     <h4>Recent</h4>
-                    <p><a href="#">Clear all</a></p>
+                    <p><a href="#" id="clearBtn">Clear all</a></p>
                 </div>
                 <div class="account">
+                    <div class="cart center-error">
+                        <div>
+                            <div class="info">
+                                <p class="searchError" style="text-align: center;">No Recent Searches....</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="account">
                     <div class="cart">
                         <div>
                             <div class="img">
@@ -49,7 +59,7 @@
                             <a href="#">X</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- search  -->
@@ -268,6 +278,7 @@
     <script src="./js/carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
     <script src="./js/main.js"></script>
+    <script src="./js/home.js"></script>
 </body>
 
 </html>

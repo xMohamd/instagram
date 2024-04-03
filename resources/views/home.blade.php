@@ -2,9 +2,17 @@
 @section('title', 'News Feed')
 @section('content')
 
-  <!--***** posts_container start ****** -->
-  <div class="main_section">
-    <div class="posts_container">
+
+{{-- <a href="{{ route('logout') }}"
+    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+</form> --}}
+
+<!--***** posts_container start ****** -->
+<div class="main_section">
+  <div class="posts_container">
       <div class="stories">
         <div class="owl-carousel items">
         </div>
