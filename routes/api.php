@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AP\Posts\CommentController;
+use App\Http\Controllers\API\Posts\CommentController;
 use App\Http\Controllers\API\Posts\LikeController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
