@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\AP\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
@@ -17,11 +17,11 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCommentRequest $request)
+    public function store(StoreCommentRequest $request, string $post_id)
     {
         $request->validated();
 
-        return $this->postRepository->comment($request->post_id, [
+        return $this->postRepository->comment($post_id, [
             'comment' => $request->comment,
             'user_id' => $request->user()->id,
         ]);
@@ -30,11 +30,11 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCommentRequest $request, string $id)
+    public function update(UpdateCommentRequest $request, string $comment_id)
     {
         $request->validated();
 
-        return $this->postRepository->updateComment($id, [
+        return $this->postRepository->updateComment($comment_id, [
             'comment' => $request->comment,
         ]);
     }
@@ -44,6 +44,6 @@ class CommentController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return $this->postRepository->deleteComment($id);
     }
 }

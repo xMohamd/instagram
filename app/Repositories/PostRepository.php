@@ -111,4 +111,9 @@ class PostRepository implements RepositoryContract
             ->latest()
             ->get();
     }
+
+    public function deleteComment($id)
+    {
+        return Comment::destroy($id);
+    }
 }
