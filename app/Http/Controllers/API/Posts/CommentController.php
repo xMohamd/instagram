@@ -21,10 +21,12 @@ class CommentController extends Controller
     {
         $request->validated();
 
-        return $this->postRepository->comment($post_id, [
+        $comment = $this->postRepository->comment($post_id, [
             'comment' => $request->comment,
             'user_id' => $request->user()->id,
         ]);
+
+        return response()->json($comment->load('user'), 201);
     }
 
     /**
