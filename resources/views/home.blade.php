@@ -3,16 +3,16 @@
 @section('content')
 
 
-{{-- <a href="{{ route('logout') }}"
+  {{-- <a href="{{ route('logout') }}"
     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form> --}}
 
-<!--***** posts_container start ****** -->
-<div class="main_section">
-  <div class="posts_container">
+  <!--***** posts_container start ****** -->
+  <div class="main_section">
+    <div class="posts_container">
       <div class="stories">
         <div class="owl-carousel items">
         </div>
@@ -22,7 +22,7 @@
         @foreach ($posts as $post)
           <x-post :post="$post" />
         @endforeach
-        <div class="row text-center w-100">
+        <div class="text-center row w-100">
           {{ $posts->links() }}
         </div>
       </div>
@@ -99,5 +99,9 @@
     </div>
   </div>
   <!--***** followers_container end ****** -->
+@endsection
 
+@section('scripts')
+  <script src="./js/home.js"></script>
+  <script src="./js/post-handlers.js"></script>
 @endsection
