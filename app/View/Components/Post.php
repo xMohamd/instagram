@@ -8,12 +8,17 @@ use Illuminate\View\Component;
 
 class Post extends Component
 {
+    public $isLikedByUser;
+    public $isCommentedByUser;
+    public $post;
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public $post
-    ) {
+    public function __construct($post)
+    {
+        $this->post = $post;
+        $this->isLikedByUser = $post->likes->contains(auth()->user()) ? 'text-danger' : '';
+        $this->isCommentedByUser = $post->comments->contains('user', auth()->user()) ? 'text-primary' : '';
     }
 
     /**
@@ -21,6 +26,7 @@ class Post extends Component
      */
     public function render(): View|Closure|string
     {
+
         return view('components.post');
     }
 }
