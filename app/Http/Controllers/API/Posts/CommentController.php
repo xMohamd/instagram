@@ -36,9 +36,11 @@ class CommentController extends Controller
     {
         $request->validated();
 
-        return $this->postRepository->updateComment($comment_id, [
+        $this->postRepository->updateComment($comment_id, [
             'comment' => $request->comment,
         ]);
+
+        return response()->json(['message' => 'Comment updated successfully'], 200);
     }
 
     /**
@@ -46,6 +48,8 @@ class CommentController extends Controller
      */
     public function destroy(string $id)
     {
-        return $this->postRepository->deleteComment($id);
+        $this->postRepository->deleteComment($id);
+
+        return response()->json(['message' => 'Comment deleted successfully'], 200);
     }
 }
