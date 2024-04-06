@@ -11,7 +11,7 @@ class PostRepository implements RepositoryContract
 {
     public function all()
     {
-        return Post::whereIn('user_id', function ($query) {
+        $posts = Post::whereIn('user_id', function ($query) {
             $query->select('followed_id')
                 ->from('follows')
                 ->where('follower_id', Auth::id());
@@ -26,11 +26,17 @@ class PostRepository implements RepositoryContract
             ->withCount(['likes', 'comments'])
             ->latest()
             ->get();
+
+        $posts->each(function ($post) {
+            $post->comments = $post->comments->take(3);
+        });
+
+        return $posts;
     }
 
     public function paginate($perPage = 10)
     {
-        return Post::whereIn('user_id', function ($query) {
+        $posts = Post::whereIn('user_id', function ($query) {
             $query->select('followed_id')
                 ->from('follows')
                 ->where('follower_id', Auth::id());
@@ -45,6 +51,12 @@ class PostRepository implements RepositoryContract
             ->withCount(['likes', 'comments'])
             ->latest()
             ->simplePaginate($perPage);
+
+        $posts->each(function ($post) {
+            $post->comments = $post->comments->take(3);
+        });
+
+        return $posts;
     }
 
     public function find($id)
