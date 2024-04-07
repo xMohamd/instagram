@@ -15,12 +15,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
-
-Route::get('/hashtag/{hashtag}', [TagController::class, 'hash'])->name('hash');
 
 
 // Route::get('/dashboard', function () {
@@ -28,8 +27,6 @@ Route::get('/hashtag/{hashtag}', [TagController::class, 'hash'])->name('hash');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-
-    //Route::get('/', HomeController::class)->name('home');
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

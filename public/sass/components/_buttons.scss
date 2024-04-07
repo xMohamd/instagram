@@ -1,0 +1,23 @@
+.dropup .dropdown-toggle::after{
+    display: none;
+}
+button.follow_text{
+    background-color: transparent;
+    border: none;
+    // color: $white;
+}
+button.log_btn{
+    background-color: $primary-blue;
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 7px 16px;
+    border-radius: 10px;
+    opacity: 0.7;
+    margin-top: 15px;
+    
+    &:hover{
+        opacity: 1;
+    }
+}
+

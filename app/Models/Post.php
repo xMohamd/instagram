@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use Egulias\EmailValidator\Parser\Comment;
+
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,7 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function likedByUsers()
+    public function likes()
     {
         return $this->belongsToMany(User::class, 'likes');
     }
@@ -33,5 +34,10 @@ class Post extends Model
     public function media()
     {
         return $this->belongsTo(Media::class, 'media_id');
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(Media::class);
     }
 }
