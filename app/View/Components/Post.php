@@ -10,6 +10,7 @@ class Post extends Component
 {
     public $isLikedByUser;
     public $isCommentedByUser;
+    public $isSavedByUser;
     public $post;
     /**
      * Create a new component instance.
@@ -19,6 +20,7 @@ class Post extends Component
         $this->post = $post;
         $this->isLikedByUser = $post->likes->contains(auth()->user()) ? 'text-danger' : '';
         $this->isCommentedByUser = $post->comments->contains('user', auth()->user()) ? 'text-primary' : '';
+        $this->isSavedByUser = $post->savedPosts->contains(auth()->user()) ? 'text-info' : '';
     }
 
     /**

@@ -142,6 +142,25 @@ async function handleCommentEditing(event) {
     });
 }
 
+async function handleSave(event) {
+    try {
+        const button = event.target.closest("[data-post-save]");
+        const postId = button.getAttribute("data-post-save");
+
+        if (event.target.classList.contains("text-info")) {
+            const response = await axios.delete(`${url}/posts/${postId}/save`);
+            console.log("Save removed:", response.data);
+            event.target.classList.toggle("text-info");
+        } else {
+            const response = await axios.post(`${url}/posts/${postId}/save`);
+            console.log("Save submitted:", response.data);
+            event.target.classList.toggle("text-info");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+
 document.querySelectorAll("[data-post-comment]").forEach((form) => {
     form.addEventListener("submit", handleComment);
 });
@@ -156,4 +175,8 @@ document.querySelectorAll("[data-comment-delete]").forEach((button) => {
 
 document.querySelectorAll("[data-comment-edit]").forEach((button) => {
     button.addEventListener("click", handleCommentEditing);
+});
+
+document.querySelectorAll("[data-post-save]").forEach((button) => {
+    button.addEventListener("click", handleSave);
 });

@@ -109,23 +109,22 @@ class PostRepository implements RepositoryContract
         return $comment->update($data);
     }
 
-    public function search($query)
-    {
-        return Post::where('caption', 'like', "%$query%")
-            ->with([
-                'user',
-                'likes',
-                'user',
-                'comments.user',
-                'media',
-            ])
-            ->withCount(['likes', 'comments'])
-            ->latest()
-            ->get();
-    }
-
     public function deleteComment($id)
     {
         return Comment::destroy($id);
+    }
+
+    public function save($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return $post->savedPosts()->attach(Auth::id());
+    }
+
+    public function unsave($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return $post->savedPosts()->detach(Auth::id());
     }
 }
