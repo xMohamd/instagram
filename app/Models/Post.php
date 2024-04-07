@@ -27,6 +27,11 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'post_hashtags');
+        return $this->belongsToMany(Tag::class, 'posts_tags');
+    }
+
+    public function media()
+    {
+        return $this->belongsTo(Media::class, 'media_id');
     }
 }
