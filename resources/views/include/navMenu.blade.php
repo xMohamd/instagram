@@ -160,13 +160,18 @@
                         <li><a class="dropdown-item bold_border" href="#">
                                 <span>Switch accounts</span>
                             </a></li>
-                        <li><a class="dropdown-item" href="./login.html">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <span>Log out</span>
-                            </a></li>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!--  -->
-
             </div>
         </div>
         <!-- nav for small screen  -->
