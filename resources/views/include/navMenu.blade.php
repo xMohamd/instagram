@@ -11,7 +11,7 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a class="active" href="home.html">
+                        <a class="active" href="{{ route('home') }}">
                             <svg aria-label="Home" fill="currentColor" class="home-svg" height="24" role="img"
                                 viewBox="0 0 24 24">
                                 <title>Home</title>
@@ -123,7 +123,7 @@
 
                     </li>
                     <li>
-                        <a href="./profile.html">
+                        <a href="{{ route('profile') }}">
                             <img class="circle story" src="{{Auth::user()->avatar}}">
                             <span class="d-none d-lg-block ">Profile</span>
                         </a>
