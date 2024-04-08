@@ -124,7 +124,7 @@
                     </li>
                     <li>
                         <a href="./profile.html">
-                            <img class="circle story" src="./images/profile_img.jpg">
+                            <img class="circle story" src="{{Auth::user()->avatar}}">
                             <span class="d-none d-lg-block ">Profile</span>
                         </a>
                     </li>
