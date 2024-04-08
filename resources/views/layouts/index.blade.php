@@ -277,7 +277,7 @@
   <script src="./js/carousel.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
   <script src="./js/main.js"></script>
-  <script src="./js/home.js"></script>
+  @yield('scripts')
 </body>
 
 </html>
