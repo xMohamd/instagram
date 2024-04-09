@@ -3,8 +3,8 @@
     <p class="card-title fs-5">
       <a class="d-flex align-items-center link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
         href="#" role="button">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="22"
-          alt="Avatar" loading="lazy" />&nbsp {{ $post->user->username }}
+        <img src="{{ $post->user->avatar }}" class="rounded-circle" height="22" alt="Avatar" loading="lazy" />&nbsp
+        {{ $post->user->username }}
       </a>
       <span class="text-body-secondary fs-6">{{ $post->created_at->diffForHumans() }}</span>
     </p>
@@ -71,8 +71,8 @@
                 <p class="fs-5">
                   <a class="d-flex align-items-center link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                     href="#" role="button">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
-                      height="22" alt="Avatar" loading="lazy" />&nbsp {{ $post->user->username }}
+                    <img src="{{ $post->user->avatar }}" class="rounded-circle" height="22" alt="Avatar"
+                      loading="lazy" />&nbsp {{ $post->user->username }}
                   </a>
                   <span class="text-body-secondary fs-6">{{ $post->created_at->diffForHumans() }}</span>
                 </p>
@@ -129,8 +129,8 @@
                     @foreach ($post->comments as $comment)
                       <div class="row" data-comment="{{ $comment->id }}">
                         <div class="col-1">
-                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
-                            height="22" alt="Avatar" loading="lazy" />
+                          <img src="{{ $post->user->avatar }}" class="rounded-circle" height="22" alt="Avatar"
+                            loading="lazy" />
                         </div>
                         <div class="p-0 col-9">
                           <p class="p-0 my-0 fw-bold">{{ $comment->user->username }} -
