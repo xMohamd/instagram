@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="./css/navMenu.css">
-    <link rel="stylesheet" href="./sass/vender/bootstrap.css">
-    <link rel="stylesheet" href="./sass/vender/bootstrap.min.css">
-    <link rel="stylesheet" href="./owlcarousel/owl.theme.default.min.css">
-    <link rel="stylesheet" href="./owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="{{asset('css/navMenu.css')}}">
+    <link rel="stylesheet" href="{{asset('sass/vender/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('sass/vender/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('owlcarousel/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{asset('owlcarousel/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('sass/main.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css">
-    <link rel="stylesheet" href="./sass/main.css">
     <!-- Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -273,11 +273,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
         integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous">
     </script>
-    <script src="./owlcarousel/jquery.min.js"></script>
-    <script src="./owlcarousel/owl.carousel.min.js"></script>
-    <script src="./js/carousel.js"></script>
+    <script src="{{asset('owlcarousel/jquery.min.js')}}"></script>
+    <script src="{{asset('owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/carousel.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="{{asset('js/main.js')}}"></script>
     @yield('scripts')
 </body>
 
