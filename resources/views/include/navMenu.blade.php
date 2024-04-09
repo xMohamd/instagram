@@ -4,8 +4,8 @@
         <div class="nav">
             <div class="logo">
                 <a href="./home.html">
-                    <img class="d-block d-lg-none small-logo" src="./images/instagram.png" alt="logo">
-                    <img class="d-none d-lg-block" src="./images/logo_menu.png" alt="logo">
+                    <img class="d-block d-lg-none small-logo" src="{{asset('images/instagram.png')}}" alt="logo">
+                    <img class="d-none d-lg-block" src="{{asset('images/logo_menu.png')}}" alt="logo">
                 </a>
             </div>
             <div class="menu">
@@ -123,7 +123,7 @@
 
                     </li>
                     <li>
-                        <a href="{{ route('profile') }}">
+                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">
                             <img class="circle story" src="{{Auth::user()->avatar}}">
                             <span class="d-none d-lg-block ">Profile</span>
                         </a>
@@ -133,29 +133,29 @@
             <div class="more">
                 <div class="btn-group dropup">
                     <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="./images/menu.png">
+                        <img src="{{asset('images/menu.png')}}">
                         <span class="d-none d-lg-block ">More</span>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">
                                 <span>Settings</span>
-                                <img src="./images/reglage.png">
+                                <img src="{{asset('images/reglage.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Your activity</span>
-                                <img src="./images/history.png">
+                                <img src="{{asset('images/history.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Saved</span>
-                                <img src="./images/save-instagram.png">
+                                <img src="{{asset('images/save-instagram.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Switch apperance</span>
-                                <img src="./images/moon.png">
+                                <img src="{{asset('images/moon.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Report a problem</span>
-                                <img src="./images/problem.png">
+                                <img src="{{asset('images/problem.png')}}">
                             </a></li>
                         <li><a class="dropdown-item bold_border" href="#">
                                 <span>Switch accounts</span>
