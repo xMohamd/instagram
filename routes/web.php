@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,7 @@ Route::get('/', function () {
 
 
 // Route::get('/dashboard', function () {
-//     return view('dashboard');
+//    return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -61,4 +62,14 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 Route::fallback(function () {
     return "Page Not Found";
+});
+
+Route::middleware(['is_admin'])->group(function () {
+    Route::get('admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('admin/trash', [AdminController::class, 'trash'])->name('admin.trash');
+    Route::get('admin/edit/{user}', [AdminController::class, 'edit'])->name('admin.edit');
+    Route::put('admin/update/{user}', [AdminController::class, 'update'])->name('admin.update');
+    Route::delete('admin/delete/{user}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::get('admin/restore/{id}', [AdminController::class, 'restore'])->name('admin.restore');
+    Route::delete('admin/trash/{id}', [AdminController::class, 'forceDelete'])->name('admin.forceDelete');
 });
