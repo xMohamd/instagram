@@ -5,7 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deleted Users</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .btn-gradient {
+            background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+        }
+        .btn-gradient:hover {
+            background-image: linear-gradient(to right, #ff7eb3 0%, #ff758c 100%);
+        }
+        .shadow-gradient {
+            box-shadow: 0 10px 15px -3px rgba(255, 100, 150, 0.2), 0 4px 6px -2px rgba(255, 100, 150, 0.1);
+        }
+        .btn-edit {
+            background-image: linear-gradient(to right, #60a5fa 0%, #3b82f6 100%);
+            color: white;
+        }
+        .btn-edit:hover {
+            background-image: linear-gradient(to right, #3b82f6 0%, #60a5fa 100%);
+        }
+        .btn-delete {
+            background-image: linear-gradient(to right, #f87171 0%, #ef4444 100%);
+            color: white;
+        }
+        .btn-delete:hover {
+            background-image: linear-gradient(to right, #ef4444 0%, #f87171 100%);
+        }
+    </style>
 </head>
 <body class="bg-pink-50">
 
