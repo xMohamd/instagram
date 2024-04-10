@@ -3,7 +3,7 @@
         <!-- nav for big->medium screen -->
         <div class="nav">
             <div class="logo">
-                <a href="./home.html">
+                <a href="{{ route('home') }}">
                     <img class="d-block d-lg-none small-logo" src="{{asset('images/instagram.png')}}" alt="logo">
                     <img class="d-none d-lg-block" src="{{asset('images/logo_menu.png')}}" alt="logo">
                 </a>
