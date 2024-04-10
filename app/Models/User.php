@@ -24,8 +24,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'username'
+        'username',
+        'avater',
+        'bio',
+        'website',
+        'gender',
+
     ];
+    public $timestamps =false;
 
     /**
      * The attributes that should be hidden for serialization.

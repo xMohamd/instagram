@@ -12,7 +12,7 @@
                 <img src="{{ asset('images/3.png') }}" alt="Profile photo">
             </div>
             <div class="profile-user-settings">
-                <h1 class="profile-user-name">zeinabradwan88</h1>
+                <h1 class="profile-user-name"><a href="{{ route('profile.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a></h1>
                 <button class="btn profile-edit-btn" onclick="redirectToEditProfile()">Edit Profile</button>
                 <button class="btn profile-settings-btn" aria-label="profile settings"><img src="{{ asset('images/setting.png') }}" style="width:28px;"></button>
             </div>
@@ -24,8 +24,8 @@
                 </ul>
             </div>
             <div class="profile-bio">
-                <p><span class="profile-real-name">Zeinab Radwan</span></p>
-                <p style="font-size: 14px;">Turning passion into profession | Future Software Engineer | aspiring chef 🧘‍♀️🍲</p>
+                <p><span class="profile-real-name"><a href="{{ Auth::user()->website }}">{{ Auth::user()->full_name }}</a></span></p>
+                <p style="font-size: 14px;">{{ Auth::user()->bio }}</p>
             </div>
         </div>
     </div>

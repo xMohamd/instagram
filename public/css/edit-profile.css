@@ -61,7 +61,7 @@ input[type="file"] {
   color: #737373;
 }
 
-.profile-bio textarea {
+.profile-bio textarea,.profile-website textarea,.profile-gender select{
   width: 700px;
   height: 40px;
   padding: 10px;
