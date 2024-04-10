@@ -16,3 +16,13 @@
 /* .cart div img {
     height: 56px;
 } */
+
+.followBtn {
+    background-color: #1877F2 !important;
+    color: white;
+}
+
+.blockBtn {
+    background-color: #ED4956 !important;
+    color: white;
+}
