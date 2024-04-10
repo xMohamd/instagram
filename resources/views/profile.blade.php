@@ -2,6 +2,20 @@
 @section('title', 'Profile')
 @section('content')
 
+<form id="followForm" action="{{ route('follow.store') }}" method="POST" style="display: none;">
+    @csrf
+    <input type="hidden" name="follower_id" value="{{ Auth::id() }}">
+    <input type="hidden" name="followed_id" value="{{ $user->id }}">
+</form>
+
+<form id="unfollowForm"
+    action="{{ route('follow.destroy', ['follower_id' => Auth::id(), 'followed_id' => $user->id]) }}" method="POST"
+    style="display: none;">
+    @csrf
+    @method('DELETE')
+</form>
+
+
 <div class="profile_container">
     <div class="profile_info">
         <div class="cart">
@@ -16,9 +30,15 @@
                         Edit profile
                     </button>
                     @else
-                    <button class="edit_profile followBtn">
-                        Follow
-                    </button>
+                    @if (count($followers->where('username', Auth::user()->username)) != 0)
+                    <button id="unfollowFormBtn" class="edit_profile followBtn">Following</button>
+                    @else
+                    @if (count($following->where('username', Auth::user()->username)) != 0)
+                    <button type="submit" id="followFormBtn" class="edit_profile followBtn">Follow Back</button>
+                    @else
+                    <button type="submit" id="followFormBtn" class="edit_profile followBtn">Follow</button>
+                    @endif
+                    @endif
                     <button class="edit_profile blockBtn">
                         Block
                     </button>
@@ -87,7 +107,7 @@
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
                 tabindex="0">
                 <div id="posts_sec" class="post">
-                    @foreach ($posts as $post)
+                    @foreach ($user->posts as $post)
                     <div class="item">
                         <img class="img-fluid item_img" src="{{$post->media->url}}" alt="">
                     </div>
@@ -97,7 +117,7 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
                 tabindex="0">
                 <div id="saved_sec" class="post">
-                    @foreach ($savedPosts as $post)
+                    @foreach ($user->savedPosts as $post)
                     <div class="item">
                         <img class="img-fluid item_img" src="{{$post->media->url}}" alt="">
                     </div>
@@ -172,4 +192,5 @@
 
 @section('scripts')
 <script src="{{asset('js/home.js')}}"></script>
+<script src="{{asset('js/profile.js')}}"></script>
 @endsection
