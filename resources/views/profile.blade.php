@@ -11,19 +11,34 @@
             <div class="info">
                 <p class="name">
                     {{$user->username}}
+                    @if (Auth::user()->username == $user->username)
                     <button class="edit_profile">
                         Edit profile
                     </button>
+                    @else
+                    <button class="edit_profile followBtn">
+                        Follow
+                    </button>
+                    <button class="edit_profile blockBtn">
+                        Block
+                    </button>
+                    @endif
                 </p>
                 <div class="general_info">
                     <p><span>{{$user->posts->count()}}</span> post</p>
-                    <p><span>{{$followers}}</span> followers</p>
-                    <p><span>{{$following}}</span> following</p>
+                    <a data-bs-toggle="modal" data-bs-target="#followersModal">
+                        <p class="follower"><span>{{count($followers)}}</span> followers</p>
+                    </a>
+                    <a data-bs-toggle="modal" data-bs-target="#followingModal">
+                        <p class="following"><span>{{count($following)}}</span> following</p>
+                    </a>
                 </div>
                 <p class="nick_name" style="font-weight: bold;">{{$user->name}}</p>
                 <p class="desc">
                     {{$user->bio ?? "No Bio"}}
                 </p>
+                <p class="nick_name">{{$user->gender ?? "Male"}}</p>
+                <p class="nick_name">{{$user->website ?? "website"}}</p>
             </div>
         </div>
     </div>
@@ -52,11 +67,13 @@
                 </button>
             </li>
             <li class="nav-item mx-2" role="presentation">
+                @if (Auth::user()->username == $user->username)
                 <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
                     type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                     <img src="{{asset('images/save-instagram.png')}}" alt="saved posts">
                     SAVED
                 </button>
+                @endif
             </li>
             <li class="nav-item mx-2" role="presentation">
                 <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
@@ -99,6 +116,54 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<!-- Followers Modal -->
+<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="followersModalLabel">Followers</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-unstyled">
+                    @foreach($followers as $follower)
+                    <li class="list-group-item border-0 custom-list-item">
+                        <img src="{{$follower->avatar}}" alt="Image Icon" class="img-icon rounded-circle"
+                            style="width: 50px; height: 50px;">
+                        <a href="{{route('profile', ['id' => $follower->id]) }}"
+                            class="text-decoration-none">{{$follower->username }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Following Modal -->
+<div class="modal fade" id="followingModal" tabindex="-1" aria-labelledby="followingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="followingModalLabel">Following</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-unstyled">
+                    @foreach($following as $follow)
+                    <li class="list-group-item border-0 custom-list-item">
+                        <img src="{{$follow->avatar}}" alt="Image Icon" class="img-icon rounded-circle"
+                            style="width: 50px; height: 50px;">
+                        <a href="{{route('profile', ['id' => $follow->id]) }}"
+                            class="text-decoration-none">{{$follow->username }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     </div>
 </div>
