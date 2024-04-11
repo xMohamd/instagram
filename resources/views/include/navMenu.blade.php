@@ -180,17 +180,17 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img class="logo" src="./images/logo_menu.png">
+                        <img class="logo" src="{{asset('images/logo_menu.png')}}">
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">
                                 <span>Following</span>
-                                <img src="./images/add-friend.png">
+                                <img src="{{asset('images/add-friend.png')}}">
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Favorites</span>
-                                <img src="./images/star.png">
+                                <img src="asset('images/star.png')}}">
                             </a>
                         </li>
                     </ul>
@@ -200,7 +200,7 @@
                         <div class="input-group">
                             <div class="form-outline">
                                 <div>
-                                    <img src="./images/search.png" alt="search">
+                                    <img src="{{asset('images/search.png')}}" alt="search">
                                 </div>
                                 <input type="search" id="form1" class="form-control" placeholder="Search" />
                             </div>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="notifications notification_icon">
                         <a href="./notification.html">
-                            <img src="./images/love.png">
+                            <img src="{{asset('images/love.png')}}">
                         </a>
                     </div>
 
@@ -221,24 +221,24 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img class="logo" src="./images/logo_menu.png">
+                    <img class="logo" src="{{asset('images/logo_menu.png')}}">
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">
                             <span>Following</span>
-                            <img src="./images/add-friend.png">
+                            <img src="asset('images/add-friend.png')">
                         </a></li>
                     <li><a class="dropdown-item" href="#">
                             <span>Favorites</span>
-                            <img src="./images/star.png">
+                            <img src="{{asset('images/star.png')}}">
                         </a></li>
                 </ul>
             </div>
             <div class="left">
 
-                <img src="./images/send.png">
+                <img src="{{asset('images/send.png')}}">
                 <a href="./notification.html">
-                    <img class="notification_icon" src="./images/love.png">
+                    <img class="notification_icon" src="{{asset('images/love.png')}}">
                 </a>
 
             </div>
@@ -246,10 +246,11 @@
     </div>
     <!-- menu in the botton for smal screen  -->
     <div class="nav_bottom">
-        <a href="./home.html"><img src="./images/accueil.png"></a>
-        <a href="./explore.html"><img src="./images/compass.png"></a>
-        <a href="./reels.html"><img src="./images/video.png"></a>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal"><img src="./images/tab.png"></a>
-        <a href="profile.html"><img class="circle story" src="./images/profile_img.jpg"></a>
+        <a href="{{route('home')}}"><img src="{{asset('images/accueil.png')}}"></a>
+        <a href="{{route('explore')}}"><img src="{{asset('images/compass.png')}}"></a>
+        <a href="{{route('reels')}}"><img src="{{asset('images/video.png')}}"></a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal"><img src="{{asset('images/tab.png')}}"></a>
+        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}"><img class="circle story"
+                src="{{asset('images/profile_img.jpg')}}"></a>
     </div>
 </div>
