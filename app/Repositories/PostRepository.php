@@ -47,6 +47,7 @@ class PostRepository implements RepositoryContract
                 'user',
                 'comments.user',
                 'media',
+                'tags',
             ])
             ->withCount(['likes', 'comments'])
             ->latest()
