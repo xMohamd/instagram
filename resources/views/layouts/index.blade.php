@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
-  <link rel="stylesheet" href="./css/navMenu.css">
-  <link rel="stylesheet" href="./sass/vender/bootstrap.css">
-  <link rel="stylesheet" href="./sass/vender/bootstrap.min.css">
-  <link rel="stylesheet" href="./owlcarousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="./owlcarousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="{{asset('css/navMenu.css')}}">
+  <link rel="stylesheet" href="{{asset('sass/vender/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('sass/vender/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('owlcarousel/owl.theme.default.min.css')}}">
+  <link rel="stylesheet" href="{{asset('owlcarousel/owl.carousel.min.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css">
-  <link rel="stylesheet" href="./sass/main.css">
+  <link rel="stylesheet" href="{{asset('sass/main.css')}}">
   <!-- Font Awesome CDN -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -256,7 +256,7 @@
               </div>
             </div>
             <div class="post_published hide_img">
-              <img src="./images/uploaded_post.gif" alt="">
+              <img src="{{asset('images/uploaded_post.gif')}}" alt="">
             </div>
           </div>
         </div>

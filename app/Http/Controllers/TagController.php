@@ -6,7 +6,6 @@ use App\Models\Post;
 
 class TagController extends Controller
 {
-
     public function hash(string $tag)
     {
         // Retrieve posts related to the specified tag
@@ -15,7 +14,9 @@ class TagController extends Controller
         })->get();
 
         // Pass the retrieved posts and the tag to the view
-        return view('tag', ['posts' => $posts, 'tag' => $tag]);
+        return view('tag', ['posts' => $posts, 'tag' => $tag, 'hashtagValue' => $tag]);
     }
+
+
 }
 

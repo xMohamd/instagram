@@ -4,8 +4,8 @@
         <div class="nav">
             <div class="logo">
                 <a href="./home.html">
-                    <img class="d-block d-lg-none small-logo" src="./images/instagram.png" alt="logo">
-                    <img class="d-none d-lg-block" src="./images/logo_menu.png" alt="logo">
+                    <img class="d-block d-lg-none small-logo" src="{{asset('images/instagram.png')}}" alt="logo">
+                    <img class="d-none d-lg-block" src="{{asset('images/logo_menu.png')}}" alt="logo">
                 </a>
             </div>
             <div class="menu">
@@ -124,7 +124,7 @@
                     </li>
                     <li>
                         <a href="./profile.html">
-                            <img class="circle story" src="./images/profile_img.jpg">
+                            <img class="circle story" src="{{asset('images/profile_img.jpg')}}">
                             <span class="d-none d-lg-block ">Profile</span>
                         </a>
                     </li>
@@ -133,29 +133,29 @@
             <div class="more">
                 <div class="btn-group dropup">
                     <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="./images/menu.png">
+                        <img src="{{asset('images/menu.png')}}">
                         <span class="d-none d-lg-block ">More</span>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">
                                 <span>Settings</span>
-                                <img src="./images/reglage.png">
+                                <img src="{{asset('images/reglage.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Your activity</span>
-                                <img src="./images/history.png">
+                                <img src="{{asset('images/history.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Saved</span>
-                                <img src="./images/save-instagram.png">
+                                <img src="{{asset('images/save-instagram.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Switch apperance</span>
-                                <img src="./images/moon.png">
+                                <img src="{{asset('images/moon.png')}}">
                             </a></li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Report a problem</span>
-                                <img src="./images/problem.png">
+                                <img src="{{asset('images/problem.png')}}">
                             </a></li>
                         <li><a class="dropdown-item bold_border" href="#">
                                 <span>Switch accounts</span>
@@ -175,17 +175,17 @@
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img class="logo" src="./images/logo_menu.png">
+                        <img class="logo" src="{{asset('images/logo_menu.png')}}">
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">
                                 <span>Following</span>
-                                <img src="./images/add-friend.png">
+                                <img src="{{asset('images/add-friend.png')}}">
                             </a>
                         </li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Favorites</span>
-                                <img src="./images/star.png">
+                                <img src="{{asset('images/star.png')}}">
                             </a>
                         </li>
                     </ul>
@@ -195,7 +195,7 @@
                         <div class="input-group">
                             <div class="form-outline">
                                 <div>
-                                    <img src="./images/search.png" alt="search">
+                                    <img src="{{asset('images/search.png')}}" alt="search">
                                 </div>
                                 <input type="search" id="form1" class="form-control" placeholder="Search" />
                             </div>
@@ -203,7 +203,7 @@
                     </div>
                     <div class="notifications notification_icon">
                         <a href="./notification.html">
-                            <img src="./images/love.png">
+                            <img src="{{asset('images/love.png')}}">
                         </a>
                     </div>
 
@@ -245,6 +245,6 @@
         <a href="./explore.html"><img src="./images/compass.png"></a>
         <a href="./reels.html"><img src="./images/video.png"></a>
         <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal"><img src="./images/tab.png"></a>
-        <a href="profile.html"><img class="circle story" src="./images/profile_img.jpg"></a>
+        <a href="profile.html"><img class="circle story" src="{{asset('images/profile_img.jpg')}}"></a>
     </div>
 </div>
