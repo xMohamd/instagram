@@ -58,7 +58,7 @@
                     {{$user->bio ?? "No Bio"}}
                 </p>
                 <p class="nick_name">{{$user->gender ?? "Male"}}</p>
-                <p class="nick_name">{{$user->website ?? "website"}}</p>
+                <p class="nick_name"><a href="{{$user->website}}">{{$user->website ?? "website"}}</a></p>
             </div>
         </div>
     </div>
@@ -110,6 +110,16 @@
                     @foreach ($user->posts as $post)
                     <div class="item">
                         <img class="img-fluid item_img" src="{{$post->media->url}}" alt="">
+                        <div class="bg">
+                            <div class="likes">
+                                <img src="{{asset('images/heart_white.png')}}">
+                                <span>{{$post->likes->count()}}</span>
+                            </div>
+                            <div class="comments">
+                                <img src="{{asset('images/message.png')}}">
+                                <span>{{$post->comments->count()}}</span>
+                            </div>
+                        </div>
                     </div>
                     @endforeach
                 </div>
