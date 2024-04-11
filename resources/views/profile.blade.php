@@ -108,19 +108,14 @@
                 tabindex="0">
                 <div id="posts_sec" class="post">
                     @foreach ($user->posts as $post)
-                    <div class="item">
-                        <img class="img-fluid item_img" src="{{$post->media->url}}" alt="">
-                        <div class="bg">
-                            <div class="likes">
-                                <img src="{{asset('images/heart_white.png')}}">
-                                <span>{{$post->likes->count()}}</span>
-                            </div>
-                            <div class="comments">
-                                <img src="{{asset('images/message.png')}}">
-                                <span>{{$post->comments->count()}}</span>
-                            </div>
-                        </div>
-                    </div>
+                    @php
+                    $isLikedByUser = $post->likes->contains(auth()->user()) ? 'text-danger' : '';
+                    $isCommentedByUser = $post->comments->contains('user', auth()->user()) ? 'text-primary' : '';
+                    $isSavedByUser = $post->savedPosts->contains(auth()->user()) ? 'text-info' : '';
+                    @endphp
+                    @include('include.postModal', ['post' => $post, 'isLikedByUser' => $isLikedByUser,
+                    'isCommentedByUser' => $isCommentedByUser, 'isSavedByUser' => $isSavedByUser])
+                    {{-- Post view model --}}
                     @endforeach
                 </div>
             </div>
@@ -128,9 +123,13 @@
                 tabindex="0">
                 <div id="saved_sec" class="post">
                     @foreach ($user->savedPosts as $post)
-                    <div class="item">
-                        <img class="img-fluid item_img" src="{{$post->media->url}}" alt="">
-                    </div>
+                    @php
+                    $isLikedByUser = $post->likes->contains(auth()->user()) ? 'text-danger' : '';
+                    $isCommentedByUser = $post->comments->contains('user', auth()->user()) ? 'text-primary' : '';
+                    $isSavedByUser = $post->savedPosts->contains(auth()->user()) ? 'text-info' : '';
+                    @endphp
+                    @include('include.postModal', ['post' => $post, 'isLikedByUser' => $isLikedByUser,
+                    'isCommentedByUser' => $isCommentedByUser, 'isSavedByUser' => $isSavedByUser])
                     @endforeach
                 </div>
             </div>
@@ -203,4 +202,5 @@
 @section('scripts')
 <script src="{{asset('js/home.js')}}"></script>
 <script src="{{asset('js/profile.js')}}"></script>
+<script src="{{asset('js/post-handlers.js')}}"></script>
 @endsection
