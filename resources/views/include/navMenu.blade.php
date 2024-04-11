@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./explore.html">
+                        <a href="{{route('explore')}}">
                             <svg aria-label="Explore" fill="currentColor" class="explore-svg" height="24" role="img"
                                 viewBox="0 0 24 24" width="24">
                                 <title>Explore</title>
@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./reels.html">
+                        <a href="{{route('reels')}}">
                             <svg aria-label="Reels" fill="currentColor" class="reels-svg" height="24" role="img"
                                 viewBox="0 0 24 24" width="24">
                                 <title>Reels</title>
@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./messages.html">
+                        <a href="{{route('chat')}}">
                             <svg aria-label="Messenger" fill="currentColor" class="messenger-svg" height="24" role="img"
                                 viewBox="0 0 24 24" width="24">
                                 <title>Messenger</title>
