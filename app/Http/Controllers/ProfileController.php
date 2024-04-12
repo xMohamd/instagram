@@ -23,60 +23,53 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
-
-    public function create(Request $request)
-    {
-        $user = $request->user();
-
-        if ($request->filled('bio')) {
-            $user->bio = $request->bio;
-        }
-
-        if ($request->filled('website')) {
-            $user->website = $request->website;
-        }
-
-        if ($request->filled('gender')) {
-            $user->gender = $request->gender;
-        }
-
-        if ($request->hasFile('avatar')) {
-            $imageName = time() . '.' . $request->avatar->getClientOriginalExtension();
-            $request->avatar->move(public_path('images'), $imageName);
-            $user->avatar = 'images/' . $imageName;
-        }
-    
-        // Save the user only if the form is submitted and the save button is clicked
-        if ($request->has('save')) {
-            $user->save();
-        }
-
-        $user->save();
-
-        return redirect()->route('profile.edit');
-    }
-
 
     /**
      * Update the user's profile information using a form request.
      */
-    public function update(ProfileUpdateRequest $request ): RedirectResponse
+    /**
+ * Update the user's profile information.
+ */
+public function update(Request $request): RedirectResponse
+{
+    $user = $request->user();
 
-    {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    // Update the user's name and email if they are provided in the request
+    if ($request->filled('name')) {
+        $user->name = $request->name;
     }
+
+    if ($request->filled('email')) {
+        $user->email = $request->email;
+        // Reset email verification if the email has changed
+        if ($request->user()->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+    }
+
+    // Update the other profile fields
+    if ($request->filled('bio')) {
+        $user->bio = $request->bio;
+    }
+
+    if ($request->filled('website')) {
+        $user->website = $request->website;
+    }
+
+    if ($request->filled('gender')) {
+        $user->gender = $request->gender;
+    }
+
+    if ($request->hasFile('avatar')) {
+        $imageName = time() . '.' . $request->avatar->getClientOriginalExtension();
+        $request->avatar->move(public_path('images'), $imageName);
+        $user->avatar = 'images/' . $imageName;
+    }
+
+    $user->save();
+
+    return Redirect::route('profile.edit')->with('status', 'profile-updated');
+}
 
     /**
      * Delete the user's account.
