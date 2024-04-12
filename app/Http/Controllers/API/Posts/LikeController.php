@@ -18,7 +18,8 @@ class LikeController extends Controller
      */
     public function store(string $post_id)
     {
-        return $this->postRepository->like($post_id);
+        $this->postRepository->like($post_id);
+        return response()->json(['message' => 'Like added successfully'], 200);
     }
 
     /**
@@ -26,6 +27,7 @@ class LikeController extends Controller
      */
     public function destroy(string $post_id)
     {
-        return $this->postRepository->unlike($post_id);
+        $this->postRepository->unlike($post_id);
+        return response()->json(['message' => 'Like removed successfully'], 200);
     }
 }

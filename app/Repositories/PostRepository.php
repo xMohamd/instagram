@@ -11,7 +11,7 @@ class PostRepository implements RepositoryContract
 {
     public function all()
     {
-        return Post::whereIn('user_id', function ($query) {
+        $posts = Post::whereIn('user_id', function ($query) {
             $query->select('followed_id')
                 ->from('follows')
                 ->where('follower_id', Auth::id());
@@ -26,11 +26,17 @@ class PostRepository implements RepositoryContract
             ->withCount(['likes', 'comments'])
             ->latest()
             ->get();
+
+        $posts->each(function ($post) {
+            $post->comments = $post->comments->take(3);
+        });
+
+        return $posts;
     }
 
     public function paginate($perPage = 10)
     {
-        return Post::whereIn('user_id', function ($query) {
+        $posts = Post::whereIn('user_id', function ($query) {
             $query->select('followed_id')
                 ->from('follows')
                 ->where('follower_id', Auth::id());
@@ -41,10 +47,17 @@ class PostRepository implements RepositoryContract
                 'user',
                 'comments.user',
                 'media',
+                'tags',
             ])
             ->withCount(['likes', 'comments'])
             ->latest()
             ->simplePaginate($perPage);
+
+        $posts->each(function ($post) {
+            $post->comments = $post->comments->take(3);
+        });
+
+        return $posts;
     }
 
     public function find($id)
@@ -97,23 +110,22 @@ class PostRepository implements RepositoryContract
         return $comment->update($data);
     }
 
-    public function search($query)
-    {
-        return Post::where('caption', 'like', "%$query%")
-            ->with([
-                'user',
-                'likes',
-                'user',
-                'comments.user',
-                'media',
-            ])
-            ->withCount(['likes', 'comments'])
-            ->latest()
-            ->get();
-    }
-
     public function deleteComment($id)
     {
         return Comment::destroy($id);
+    }
+
+    public function save($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return $post->savedPosts()->attach(Auth::id());
+    }
+
+    public function unsave($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return $post->savedPosts()->detach(Auth::id());
     }
 }

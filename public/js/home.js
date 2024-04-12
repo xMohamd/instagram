@@ -4,9 +4,6 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 const url = `http://127.0.0.1:8000/api`;
 const searchInput = document.querySelector("#searchInput");
 const searchResultContainer = document.querySelector(".find");
-const commentsForms = document.querySelectorAll("[data-comment-post-id]");
-
-console.log(commentsForms);
 
 searchInput.addEventListener("input", async () => {
     if (!searchInput.value) {
@@ -24,7 +21,7 @@ searchInput.addEventListener("input", async () => {
         console.log(searchResultContainer);
         data.forEach(({ id, name, username, avatar }) => {
             const item = `
-            <div class="account" data="${id}">
+            <div class="account" data="${id}" onclick="window.location.href='http://127.0.0.1:8000/profile/${id}'" style="cursor: pointer;">
                 <div class="cart">
                     <div>
                         <div class="img">
@@ -94,65 +91,4 @@ searchInput.addEventListener("input", async () => {
     } catch (error) {
         console.error("Error fetching data:", error);
     }
-});
-
-async function handleComment(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    const formData = new FormData(form);
-    const comment = formData.get("comment");
-    const postId = form.getAttribute("data-comment-post-id");
-
-    axios
-        .post(`${url}/posts/${postId}/comments`, {
-            comment: comment,
-        })
-        .then((response) => {
-            //add comment to DOM
-            console.log("Comment submitted:", response.data);
-            const comment = response.data;
-            const commentList = event.target.parentElement.querySelector(
-                ".row .comments-list"
-            );
-            const commentItem = `
-            <div class="row">
-                <div class="col-1">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
-                        height="22" alt="Avatar" loading="lazy" />
-                </div>
-                <div class="p-0 col-11">
-                    <p class="p-0 my-0 fw-bold">${comment.user.username}</p>
-                    <p class="p-0 my-0">${comment.comment}</p>
-                    <hr>
-                </div>
-            </div>
-            `;
-            commentList.insertAdjacentHTML("beforeend", commentItem);
-        })
-        .catch((error) => {
-            console.error("Error submitting comment:", error);
-        });
-}
-
-async function handleLike(event) {
-    const button = event.target;
-    const postId = button.getAttribute("data-like-post-id");
-
-    axios
-        .post(`${url}/posts/${postId}/likes`)
-        .then((response) => {
-            console.log("Like submitted:", response.data);
-        })
-        .catch((error) => {
-            console.error("Error submitting like:", error);
-        });
-}
-
-document.querySelectorAll("[data-comment-post-id]").forEach((form) => {
-    form.addEventListener("submit", handleComment);
-});
-
-document.querySelectorAll("[data-like-post-id]").forEach((button) => {
-    button.addEventListener("click", handleLike);
 });
