@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 
 
-class AdminController extends Controller
+/*class AdminController extends Controller
 {
     public function __construct()
     {
@@ -100,4 +100,4 @@ class AdminController extends Controller
         return redirect()->route('admin.trash')->with('success', 'User permanently deleted successfully');
     }
 
-}
+}*/

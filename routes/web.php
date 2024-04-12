@@ -26,7 +26,7 @@ use App\Http\Controllers\AdminController;
 // Route::get('/dashboard', function () {
 //    return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::get('/profile/{id}',  [UserProfileController::class, 'index'])->name('profile');
 Route::post('/follow', [FollowController::class, 'store'])->name('follow.store');
 Route::delete('/unfollow/{follower_id}/{followed_id}', [FollowController::class, 'destroy'])->name('follow.destroy');
