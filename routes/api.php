@@ -1,6 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\Posts\CommentController;
+use App\Http\Controllers\API\Posts\LikeController;
+use App\Http\Controllers\API\Posts\SavedPostController;
+use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/users/{username}', [UserController::class, 'findByUsername']);
+
+    Route::post('/posts/{post_id}/comments', [CommentController::class, 'store']);
+    Route::post('/posts/{post_id}/likes', [LikeController::class, 'store']);
+    Route::delete('/posts/{post_id}/likes', [LikeController::class, 'destroy']);
+    Route::post('/posts/{post_id}/save', [SavedPostController::class, 'save']);
+
+    Route::put('/comments/{comment_id}', [CommentController::class, 'update']);
+    Route::delete('/comments/{comment_id}', [CommentController::class, 'destroy']);
+    Route::delete('/posts/{post_id}/save', [SavedPostController::class, 'unsave']);
 });

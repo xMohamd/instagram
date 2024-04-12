@@ -13,7 +13,7 @@ class RepositoryProvider extends ServiceProvider
     {
         $this->app->bind(
             'App\Contracts\RepositoryContract',
-            'App\Repositories\PostRepository'
+            'App\Repositories\PostRepository',
         );
     }
 

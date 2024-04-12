@@ -1,0 +1,18 @@
+.nav .menu ul li a svg {
+    margin-right: 10px;
+    width: 24px;
+}
+
+.searchError {
+    color: rgb(142, 142, 142);
+    font-weight: 400;
+    font-size: 1rem !important;
+}
+
+.center-error {
+    justify-content: center !important;
+}
+
+.cart div img {
+    height: 56px;
+}
