@@ -88,10 +88,7 @@
                                     {{ $post->caption }}
                                     <br />
                                     @foreach ($post->tags as $tag )
-                                    {{-- uncomment after merge --}}
-                                    {{-- <a href="{{route('/hashtag/'.$tag->tag)}}">#{{$tag->tag}}</a>
-                                    --}}
-                                    <a href="#">#{{$tag->tag}}</a>
+                                    <a href="{{'/hashtag/'.$tag->tag}}">#{{$tag->tag}}</a>
                                     @endforeach
                                 </p>
                                 <form class="mb-2" class="comment-form" data-post-comment="{{ $post->id }}">
