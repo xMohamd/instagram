@@ -1,12 +1,11 @@
+<head>
+    <link rel="stylesheet" href="{{ asset('css/edit-profile.css') }}">
+</head>
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+            {{ __('Name and Email Settings') }}
         </h2>
-
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
-        </p>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -28,6 +27,11 @@
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
+
+
+
+
+
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
@@ -48,7 +52,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <button class="btn profile-photo-btn">{{ __('Save') }}</button>
 
             @if (session('status') === 'profile-updated')
                 <p
@@ -61,4 +65,5 @@
             @endif
         </div>
     </form>
+
 </section>
