@@ -25,7 +25,7 @@
             <div class="cart">
                 <div>
                     <div class="img">
-                        <img src="{{asset('images/profile_img.jpg')}}" alt="">
+                        <img src="./images/profile_img.jpg" alt="">
                     </div>
                     <div class="info">
                         <p class="name">
@@ -45,7 +45,7 @@
             <div class="cart">
                 <div>
                     <div class="img">
-                        <img src="{{asset('images/profile_img.jpg')}}" alt="">
+                        <img src="./images/profile_img.jpg" alt="">
                     </div>
                     <div class="info">
                         <div class="info">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="story_like">
-                    <img src="{{asset('images/img2.jpg')}}" alt="">
+                    <img src="./images/img2.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
             <div class="cart">
                 <div>
                     <div class="img">
-                        <img src="{{asset('images/profile_img.jpg')}}" alt="">
+                        <img src="./images/profile_img.jpg" alt="">
                     </div>
                     <div class="info">
                         <p class="name">
@@ -87,7 +87,7 @@
             <div class="cart">
                 <div>
                     <div class="img">
-                        <img src="{{asset('images/profile_img.jpg')}}" alt="">
+                        <img src="./images/profile_img.jpg" alt="">
                     </div>
                     <div class="info">
                         <div class="info">
