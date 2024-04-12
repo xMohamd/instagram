@@ -37,7 +37,7 @@
             <button class="transparent-btn"><img src="{{ asset('images/posts.png') }}" alt="Posts"> <span>POSTS</span></button>
             <button class="transparent-btn"><img src="{{ asset('images/saved.png') }}" alt="Saved"> <span>SAVED</span></button>
             <button class="transparent-btn"><img src="{{ asset('images/tag.png') }}" alt="Tagged"> <span>TAGGED</span></button>
-        </div>
+        </div>      
         <div class="gallery">
             <div class="gallery-item" tabindex="0">
                 <img src="{{ asset('images/5.png') }}" class="gallery-image" alt="post media">
