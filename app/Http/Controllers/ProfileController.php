@@ -24,6 +24,42 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
+    public function create(Request $request)
+    {
+        $user = $request->user();
+
+        if ($request->filled('bio')) {
+            $user->bio = $request->bio;
+        }
+
+        if ($request->filled('website')) {
+            $user->website = $request->website;
+        }
+
+        if ($request->filled('gender')) {
+            $user->gender = $request->gender;
+        }
+
+        if ($request->hasFile('avatar')) {
+            $imageName = time() . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('images'), $imageName);
+            $user->avatar = 'images/' . $imageName;
+        }
+    
+        // Save the user only if the form is submitted and the save button is clicked
+        if ($request->has('save')) {
+            $user->save();
+        }
+
+        $user->save();
+
+        return redirect()->route('profile.edit');
+    }
+
+
+    /**
+     * Update the user's profile information using a form request.
+     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
@@ -57,4 +93,5 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
 }
