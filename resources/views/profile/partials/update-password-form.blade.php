@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="{{ asset('css/edit-profile.css') }}">
+</head>
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
@@ -32,7 +35,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <button class="btn profile-photo-btn">{{ __('Save') }}</button>
 
             @if (session('status') === 'password-updated')
                 <p

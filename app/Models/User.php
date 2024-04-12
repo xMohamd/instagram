@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Egulias\EmailValidator\Parser\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\ResetPasswordNotification;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -24,8 +24,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'username'
+        'username',
+        'avater',
+        'bio',
+        'website',
+        'gender',
+        'is_admin'
     ];
+    public $timestamps =false;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -80,5 +86,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function savedPosts()
+    {
+        return $this->belongsToMany(Post::class, 'saved_posts');
     }
 }

@@ -3,7 +3,7 @@
         <!-- nav for big->medium screen -->
         <div class="nav">
             <div class="logo">
-                <a href="./home.html">
+                <a href="{{ route('home') }}">
                     <img class="d-block d-lg-none small-logo" src="{{asset('images/instagram.png')}}" alt="logo">
                     <img class="d-none d-lg-block" src="{{asset('images/logo_menu.png')}}" alt="logo">
                 </a>
@@ -11,7 +11,7 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a class="active" href="home.html">
+                        <a class="active" href="{{ route('home') }}">
                             <svg aria-label="Home" fill="currentColor" class="home-svg" height="24" role="img"
                                 viewBox="0 0 24 24">
                                 <title>Home</title>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./explore.html">
+                        <a href="{{route('explore')}}">
                             <svg aria-label="Explore" fill="currentColor" class="explore-svg" height="24" role="img"
                                 viewBox="0 0 24 24" width="24">
                                 <title>Explore</title>
@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./reels.html">
+                        <a href="{{route('reels')}}">
                             <svg aria-label="Reels" fill="currentColor" class="reels-svg" height="24" role="img"
                                 viewBox="0 0 24 24" width="24">
                                 <title>Reels</title>
@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./messages.html">
+                        <a href="{{route('chat')}}">
                             <svg aria-label="Messenger" fill="currentColor" class="messenger-svg" height="24" role="img"
                                 viewBox="0 0 24 24" width="24">
                                 <title>Messenger</title>
@@ -123,8 +123,8 @@
 
                     </li>
                     <li>
-                        <a href="./profile.html">
-                            <img class="circle story" src="{{asset('images/profile_img.jpg')}}">
+                        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">
+                            <img class="circle story" src="{{Auth::user()->avatar}}">
                             <span class="d-none d-lg-block ">Profile</span>
                         </a>
                     </li>
@@ -160,13 +160,18 @@
                         <li><a class="dropdown-item bold_border" href="#">
                                 <span>Switch accounts</span>
                             </a></li>
-                        <li><a class="dropdown-item" href="./login.html">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <span>Log out</span>
-                            </a></li>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
                 <!--  -->
-
             </div>
         </div>
         <!-- nav for small screen  -->
@@ -185,7 +190,7 @@
                         </li>
                         <li><a class="dropdown-item" href="#">
                                 <span>Favorites</span>
-                                <img src="{{asset('images/star.png')}}">
+                                <img src="asset('images/star.png')}}">
                             </a>
                         </li>
                     </ul>
@@ -216,24 +221,24 @@
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    <img class="logo" src="./images/logo_menu.png">
+                    <img class="logo" src="{{asset('images/logo_menu.png')}}">
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">
                             <span>Following</span>
-                            <img src="./images/add-friend.png">
+                            <img src="asset('images/add-friend.png')">
                         </a></li>
                     <li><a class="dropdown-item" href="#">
                             <span>Favorites</span>
-                            <img src="./images/star.png">
+                            <img src="{{asset('images/star.png')}}">
                         </a></li>
                 </ul>
             </div>
             <div class="left">
 
-                <img src="./images/send.png">
+                <img src="{{asset('images/send.png')}}">
                 <a href="./notification.html">
-                    <img class="notification_icon" src="./images/love.png">
+                    <img class="notification_icon" src="{{asset('images/love.png')}}">
                 </a>
 
             </div>
@@ -241,10 +246,11 @@
     </div>
     <!-- menu in the botton for smal screen  -->
     <div class="nav_bottom">
-        <a href="./home.html"><img src="./images/accueil.png"></a>
-        <a href="./explore.html"><img src="./images/compass.png"></a>
-        <a href="./reels.html"><img src="./images/video.png"></a>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal"><img src="./images/tab.png"></a>
-        <a href="profile.html"><img class="circle story" src="{{asset('images/profile_img.jpg')}}"></a>
+        <a href="{{route('home')}}"><img src="{{asset('images/accueil.png')}}"></a>
+        <a href="{{route('explore')}}"><img src="{{asset('images/compass.png')}}"></a>
+        <a href="{{route('reels')}}"><img src="{{asset('images/video.png')}}"></a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal"><img src="{{asset('images/tab.png')}}"></a>
+        <a href="{{ route('profile', ['id' => Auth::user()->id]) }}"><img class="circle story"
+                src="{{asset('images/profile_img.jpg')}}"></a>
     </div>
 </div>

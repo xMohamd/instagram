@@ -1,12 +1,20 @@
-body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #ffffff;
-  margin: 0;
-  padding: 20px;
+h2 {
+  font-weight:900;
+  font-size: 18px;
+  margin-bottom: 30px;
 }
 
-h2 {
-  font-weight: 500;
+.header {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 1300px;
+  margin: auto; 
+}
+
+.header h2 {
+  font-size: 1.5rem;
 }
 
 label {
@@ -15,22 +23,19 @@ label {
   font-weight: bold;
 }
 
-input[type="file"] {
-  margin-bottom: 20px;
-}
-
 .profile-data {
     background-color: #efefef;
     padding: 16px;
     display: flex;
     align-items: center;
     border-radius: 20px;
-    width: 680px;
+    width: 1200px;
+    margin-bottom: 20px;
 }
 
 .profile-photo {
-    width: 56px;
-    height: 56px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin-right: 20px;
 }
@@ -61,8 +66,8 @@ input[type="file"] {
   color: #737373;
 }
 
-.profile-bio textarea {
-  width: 700px;
+.profile-bio input,.profile-website input,.profile-gender select{
+  width: 1200px;
   height: 40px;
   padding: 10px;
   border-radius: 5px;
@@ -70,6 +75,8 @@ input[type="file"] {
   font-size: 17px;
   background-color: #fff;
   border: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btn {
@@ -89,7 +96,5 @@ input[type="file"] {
 }
 
 main {
-  max-width: 800px;
-  margin: 0 auto; 
-  margin-right: 20px; 
+  margin: 50px; 
 }

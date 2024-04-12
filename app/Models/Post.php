@@ -35,4 +35,9 @@ class Post extends Model
     {
         return $this->belongsTo(Media::class);
     }
+
+    public function savedPosts()
+    {
+        return $this->belongsToMany(User::class, 'saved_posts');
+    }
 }
