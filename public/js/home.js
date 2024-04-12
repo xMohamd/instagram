@@ -21,7 +21,7 @@ searchInput.addEventListener("input", async () => {
         console.log(searchResultContainer);
         data.forEach(({ id, name, username, avatar }) => {
             const item = `
-            <div class="account" data="${id}">
+            <div class="account" data="${id}" onclick="window.location.href='http://127.0.0.1:8000/profile/${id}'" style="cursor: pointer;">
                 <div class="cart">
                     <div>
                         <div class="img">
