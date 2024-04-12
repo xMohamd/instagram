@@ -4,7 +4,7 @@
 <section>
     <h2>{{ __('Avatar, Bio, Website, and Gender Settings') }}</h2>
     <div>
-        <form method="post" enctype="multipart/form-data" action="{{ route('profile.create') }}">
+    <form method="post" enctype="multipart/form-data" action="{{ route('profile.update') }}">
             @csrf
             @method('patch')
             <div class="profile-data">
