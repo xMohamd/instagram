@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Notifications\Auth\QueuedResetPassword;
+use App\Notifications\Auth\QueuedVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Egulias\EmailValidator\Parser\Comment;
@@ -79,11 +81,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendPasswordResetNotification($token): void
     {
-        $this->notify(new ResetPasswordNotification($token));
+        $this->notify(new QueuedResetPassword($token));
     }
 
     public function savedPosts()
     {
         return $this->belongsToMany(Post::class, 'saved_posts');
+    }
+
+    //Overrideen sendEmailVerificationNotification implementation
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new QueuedVerifyEmail);
     }
 }
