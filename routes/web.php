@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserProfileController;
+use App\Models\Follow;
+use App\Models\Media;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +25,15 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/profile/{id}',  [UserProfileController::class, 'index'])->name('profile');
+Route::post('/follow', [FollowController::class, 'store'])->name('follow.store');
+Route::delete('/unfollow/{follower_id}/{followed_id}', [FollowController::class, 'destroy'])->name('follow.destroy');
+
+Route::get('/explore', fn () => view('explore'))->name('explore');
+Route::get('/reels', fn () => view('reels'))->name('reels');
+Route::get('/chat', fn () => view('chat'))->name('chat');
+
 
 Route::middleware('auth')->group(function () {
 
