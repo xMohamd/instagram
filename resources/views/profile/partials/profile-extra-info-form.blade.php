@@ -21,7 +21,7 @@
 
                 <!-- Upload Avatar -->
                 <div class="change-photo-section">
-                    <label for="formFile" class="btn profile-photo-btn">Change photo</label>
+                    <label for="formFile" class="btnn profile-photo-btn">Change photo</label>
                     <input name="avatar" type="file" id="formFile" style="display: none;" onchange="previewAvatar(this)">
                 </div>
             </div>
@@ -50,7 +50,7 @@
             </div>
 
             <!-- Save Button -->
-            <button class="btn profile-photo-btn">{{ __('Save') }}</button>
+            <button class="btnn profile-photo-btn">{{ __('Save') }}</button>
         </form>
     </div>
 </section>

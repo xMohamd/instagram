@@ -1,41 +1,46 @@
-<x-app-layout>
-<head>
-    <link rel="stylesheet" href="{{ asset('css/edit-profile.css') }}">
-</head>
-<header class="header">
-    <h2>{{ __('Edit Profile') }}</h2>
-</header>
+@include('layouts.index')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+<div class="header-container">
+    <h1 class="header-text">Edit Profile</h1>
+</div>
 
-            <!-- Update Profile Information Form -->
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.profile-extra-info-form')
-                </div>
+<div style="margin-left:300px;">
+    <div>
+
+        <!-- Update Profile Information Form -->
+        <div>
+            <div>
+                @include('profile.partials.profile-extra-info-form')
             </div>
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
-                </div>
-            </div>
-
-            <!-- Update Password Form -->
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <!-- Delete User Form -->
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
-
         </div>
-    </div>
 
-</x-app-layout>
+        <br><hr>
+        
+        <div>
+            <div>
+                @include('profile.partials.update-profile-information-form')
+            </div>
+        </div>
+
+        <br><hr>
+
+        <!-- Update Password Form -->
+        <div>
+            <div>
+                @include('profile.partials.update-password-form')
+            </div>
+        </div>
+
+        <br><hr>
+
+        <!-- Delete User Form -->
+        <div>
+            <div>
+                @include('profile.partials.delete-user-form')
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+</div>
