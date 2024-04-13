@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Media extends Model
 {
@@ -17,8 +16,13 @@ class Media extends Model
         'mime_type',
         'post_id',
     ];
-    public function post(): BelongsTo
+    function posts()
     {
-        return $this->belongsTo(Post::class, 'post_id', 'id');
+        return $this->hasMany(Post::class);
+    }
+
+    function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

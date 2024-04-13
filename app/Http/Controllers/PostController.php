@@ -46,9 +46,7 @@ class PostController extends Controller
             $post = new Post();
             $post->caption = $request->input('caption');
             $post->user_id = Auth::id();
-            $post->save();
 
-            $postId = $post->id;
 
 
             $path = [];
@@ -65,8 +63,11 @@ class PostController extends Controller
                 $media->mime_type = $file->getClientOriginalExtension();
                 $path[] = "https://insta-proj.s3.amazonaws.com/" . $file->store('public/images');
                 $media->url = end($path);
-                $media->post_id = $postId;
                 $media->save();
+
+
+                $post->media_id = $media->id;
+                $post->save();
             }
             return response()->json([
                 'path' => $path,

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('url');
             $table->string('size');
             $table->string('mime_type');
-            $table->foreignId("post_id")->references('id')->on('posts')->cascadeOnDelete();
             $table->timestamps();
         });
     }
