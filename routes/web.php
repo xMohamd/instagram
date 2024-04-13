@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 
 /*
@@ -34,7 +35,8 @@ Route::get('/chat', fn () => view('chat'))->name('chat');
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
-    Route::get('/', HomeController::class)->name('home');
+    Route::get('/', [PostController::class, 'index'])->name('home');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/hashtag/{hashtag}', [TagController::class, 'hash'])->name('hash');
