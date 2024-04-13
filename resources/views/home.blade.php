@@ -29,11 +29,11 @@
                 <div class="cart">
                     <div>
                         <div class="img">
-                            <img src="./images/profile_img.jpg" alt="">
+                            <img src="{{ asset('images/10771017.png') }}" alt="">
                         </div>
                         <div class="info">
-                            <p class="name">Zineb_essoussi</p>
-                            <p class="second_name">Zim Ess</p>
+                            <p class="name">Marwan Mohamed</p>
+                            <p class="second_name">marwan20</p>
                         </div>
                     </div>
                     <div class="switch">
@@ -48,11 +48,11 @@
                     <div class="cart">
                         <div>
                             <div class="img">
-                                <img src="./images/profile_img.jpg" alt="">
+                                <img src="{{ asset('images/3597892.png') }}" alt="">
                             </div>
                             <div class="info">
-                                <p class="name">Zineb_essoussi</p>
-                                <p class="second_name">Zim Ess</p>
+                                <p class="name">Mohamed Aly</p>
+                                <p class="second_name">MohamedAly</p>
                             </div>
                         </div>
                         <div class="switch">
@@ -62,11 +62,11 @@
                     <div class="cart">
                         <div>
                             <div class="img">
-                                <img src="./images/profile_img.jpg" alt="">
+                                <img src="{{ asset('images/5072860.png') }}" alt="">
                             </div>
                             <div class="info">
-                                <p class="name">Zineb_essoussi</p>
-                                <p class="second_name">Zim Ess</p>
+                                <p class="name">Mahmoud Dabbous</p>
+                                <p class="second_name">Dabbous</p>
                             </div>
                         </div>
                         <div class="switch">
@@ -76,11 +76,11 @@
                     <div class="cart">
                         <div>
                             <div class="img">
-                                <img src="./images/profile_img.jpg" alt="">
+                                <img src="{{ asset('images/1712962534.png') }}"" alt="">
                             </div>
-                            <div class="info">
-                                <p class="name">Zineb_essoussi</p>
-                                <p class="second_name">Zim Ess</p>
+                            <div class=" info">
+                                <p class="name">Mohamed Hosny</p>
+                                <p class="second_name">0xMohamed</p>
                             </div>
                         </div>
                         <div class="switch">
@@ -89,8 +89,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!--***** followers_container end ****** -->
+        </div> <!--***** followers_container end ****** -->
     </div>
 @endsection
 
