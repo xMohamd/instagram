@@ -28,48 +28,48 @@ class ProfileController extends Controller
      * Update the user's profile information using a form request.
      */
     /**
- * Update the user's profile information.
- */
-public function update(Request $request): RedirectResponse
-{
-    $user = $request->user();
+     * Update the user's profile information.
+     */
+    public function update(Request $request): RedirectResponse
+    {
+        $user = $request->user();
 
-    // Update the user's name and email if they are provided in the request
-    if ($request->filled('name')) {
-        $user->name = $request->name;
-    }
-
-    if ($request->filled('email')) {
-        $user->email = $request->email;
-        // Reset email verification if the email has changed
-        if ($request->user()->isDirty('email')) {
-            $user->email_verified_at = null;
+        // Update the user's name and email if they are provided in the request
+        if ($request->filled('name')) {
+            $user->name = $request->name;
         }
+
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+            // Reset email verification if the email has changed
+            if ($request->user()->isDirty('email')) {
+                $user->email_verified_at = null;
+            }
+        }
+
+        // Update the other profile fields
+        if ($request->filled('bio')) {
+            $user->bio = $request->bio;
+        }
+
+        if ($request->filled('website')) {
+            $user->website = $request->website;
+        }
+
+        if ($request->filled('gender')) {
+            $user->gender = $request->gender;
+        }
+
+        if ($request->hasFile('avatar')) {
+            $imageName = time() . '.' . $request->avatar->getClientOriginalExtension();
+            $request->avatar->move(public_path('images'), $imageName);
+            $user->avatar = 'images/' . $imageName;
+        }
+
+        $user->save();
+
+        return Redirect::route('profile', ['id' => $user->id])->with('status', 'profile-updated');
     }
-
-    // Update the other profile fields
-    if ($request->filled('bio')) {
-        $user->bio = $request->bio;
-    }
-
-    if ($request->filled('website')) {
-        $user->website = $request->website;
-    }
-
-    if ($request->filled('gender')) {
-        $user->gender = $request->gender;
-    }
-
-    if ($request->hasFile('avatar')) {
-        $imageName = time() . '.' . $request->avatar->getClientOriginalExtension();
-        $request->avatar->move(public_path('images'), $imageName);
-        $user->avatar = 'images/' . $imageName;
-    }
-
-    $user->save();
-
-    return Redirect::route('profile.edit')->with('status', 'profile-updated');
-}
 
     /**
      * Delete the user's account.
@@ -91,5 +91,4 @@ public function update(Request $request): RedirectResponse
 
         return Redirect::to('/');
     }
-
 }
