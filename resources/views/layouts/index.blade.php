@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/navMenu.css') }}">
     <link rel="stylesheet" href="{{ asset('sass/vender/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('sass/vender/bootstrap.min.css') }}">
@@ -132,7 +133,8 @@
         </div>
 
         <!-- Modal for add messages-->
-        <div class="modal fade" id="message_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="message_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -215,7 +217,8 @@
         </div>
 
         <!--Create model-->
-        <div class="modal fade" id="create_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="create_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -224,7 +227,8 @@
                             <span class="title_create">Create new post</span>
                             <button class="next_btn_post btn_link"></button>
                         </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <img class="up_load" src="{{ asset('images/upload.png') }}" alt="upload">
@@ -232,7 +236,8 @@
                         <button class="btn btn-primary btn_upload">
                             select from your computer
                             <form id="upload-form">
-                                <input multiple class="input_select" type="file" id="image-upload" name="files">
+                                <input multiple class="input_select" type="file" id="image-upload"
+                                    name="files">
                             </form>
                         </button>
                         <div id="image-container" class="hide_img carousel slide" data-bs-ride="carousel">
@@ -256,16 +261,15 @@
                                 <div class="cart">
                                     <div>
                                         <div class="img">
-                                            <img src="{{ asset('../'.Auth::user()->avatar) }}">
+                                            <img src="{{ asset('../' . Auth::user()->avatar) }}">
                                         </div>
                                         <div class="info">
-                                            <p class="name">{{Auth::user()->username}}</p>
+                                            <p class="name">{{ Auth::user()->username }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <form>
-                                    <textarea class="postCaption" type="text " id="emoji_create"
-                                        placeholder="Write a caption"></textarea>
+                                    <textarea class="postCaption" type="text " id="emoji_create" placeholder="Write a caption"></textarea>
                                 </form>
                             </div>
                         </div>

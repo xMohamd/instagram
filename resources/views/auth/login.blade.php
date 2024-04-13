@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
+    <link rel="icon" href="{{ asset('favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('sass/vender/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('sass/vender/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('sass/main.css') }}">
