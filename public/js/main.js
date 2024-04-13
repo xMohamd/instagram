@@ -592,3 +592,42 @@ function completed() {
 }
 
 
+const csrfToken = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute("content");
+
+async function addPost() {
+    try {
+        const postCaption = document.querySelector(".postCaption").value;
+        console.log(postCaption);
+
+        const imageFileArray = Array.from(filesUpload);
+        console.log(imageFileArray);
+
+        const formData = new FormData();
+        formData.append("caption", postCaption);
+        formData.append("_token", csrfToken);
+
+        imageFileArray.forEach((file) => {
+            formData.append("files[]", file);
+        });
+
+        console.log("FormData:", formData);
+
+        const requestOptions = {
+            method: "POST",
+            headers: {
+                "X-CSRF-TOKEN": csrfToken,
+            },
+            body: formData,
+        };
+
+        const response = await fetch("/posts", requestOptions);
+
+        const data = await response.json();
+        console.log("Post added successfully:", data);
+        // window.location.reload();
+    } catch (error) {
+        console.error("Error adding post:", error);
+    }
+}

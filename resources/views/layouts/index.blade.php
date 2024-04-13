@@ -214,7 +214,8 @@
         </div>
 
         <!--Create model-->
-        <div class="modal fade" id="create_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="create_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -223,18 +224,33 @@
                             <span class="title_create">Create new post</span>
                             <button class="next_btn_post btn_link"></button>
                         </h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img class="up_load" src="./images/upload.png" alt="upload">
+                        <img class="up_load" src="{{ asset('images/upload.png') }}" alt="upload">
                         <p>Drag photos and videos here</p>
                         <button class="btn btn-primary btn_upload">
                             select from your computer
                             <form id="upload-form">
-                                <input class="input_select" type="file" id="image-upload" name="image-upload">
+                                <input multiple class="input_select" type="file" id="image-upload"
+                                    name="files">
                             </form>
                         </button>
-                        <div id="image-container" class="hide_img">
+                        <div id="image-container" class="hide_img carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <!-- Placeholder for images -->
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#image-container"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#image-container"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
                         <div id="image_description" class="hide_img">
                             <div class="img_p"></div>
@@ -242,7 +258,7 @@
                                 <div class="cart">
                                     <div>
                                         <div class="img">
-                                            <img src="./images/profile_img.jpg">
+                                            <img src="{{ asset('images/profile_img.jpg') }}">
                                         </div>
                                         <div class="info">
                                             <p class="name">Zineb_essoussi</p>
@@ -250,12 +266,12 @@
                                     </div>
                                 </div>
                                 <form>
-                                    <textarea type="text" id="emoji_create" placeholder="write your email"></textarea>
+                                    <textarea class="postCaption" type="text " id="emoji_create" placeholder="Write a caption"></textarea>
                                 </form>
                             </div>
                         </div>
                         <div class="post_published hide_img">
-                            <img src="./images/uploaded_post.gif" alt="">
+                            <img src="{{ asset('images/uploaded_post.gif') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -278,6 +294,39 @@
     <script src="{{asset('js/carousel.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
     <script src="{{asset('js/main.js')}}"></script>
+        <script>
+        $(document).ready(function() {
+            let nextPageUrl = '{{ $posts->nextPageUrl() }}';
+            $(window).scroll(function() {
+                if ($(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+                    if (nextPageUrl) {
+                        loadMorePosts();
+                    }
+                }
+            });
+
+            function loadMorePosts() {
+                $.ajax({
+                    url: nextPageUrl,
+                    type: 'get',
+                    beforeSend: function() {
+                        nextPageUrl = '';
+                    },
+                    success: function(data) {
+                        nextPageUrl = data.nextPageUrl;
+                        $('#posts-container').append(data.view);
+                        postLikes();
+                        resetCommentEvents();
+                    },
+
+                    error: function(xhr, status, error) {
+                        console.error("Error loading more posts:", error);
+                    }
+                });
+
+            }
+        });
+    </script>
     @yield('scripts')
 </body>
 
