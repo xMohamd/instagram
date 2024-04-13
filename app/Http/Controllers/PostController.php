@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Media;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,10 @@ class PostController extends Controller
             $post->caption = $request->input('caption');
             $post->user_id = Auth::id();
 
+            $tags = [];
+            preg_match_all('/#\w+/', $post->caption, $matches);
+            $tags = array_unique($matches[0]);
+
 
 
             $path = [];
@@ -49,6 +54,15 @@ class PostController extends Controller
                 $post->media_id = $media->id;
                 $post->save();
             }
+
+            if (count($tags) > 0) {
+                foreach ($tags as $tagString) {
+                    $hashtag = ltrim($tagString, '#');
+                    $tag = Tag::firstOrCreate(['tag' => $tagString]);
+                    $post->tags()->attach($tag->id);
+                }
+            }
+
             return response()->json([
                 'path' => $path,
                 'message' => 'File uploaded successfully'
