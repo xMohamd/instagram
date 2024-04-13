@@ -1,12 +1,8 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/edit-profile.css') }}">
-</head>
+</head>    
 <section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Name and Email Settings') }}
-        </h2>
-    </header>
+    <h2>{{ __('Name and Email Settings') }}</h2>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
@@ -16,31 +12,29 @@
         @csrf
         @method('patch')
 
-        <div>
+        <div class="profile-website">
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
-        <div>
+        <div class="profile-website">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-
-
-
-
-
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-gray-800">
-                        {{ __('Your email address is unverified.') }}
+<!-- Replace the existing HTML with this -->
+<div class="email-verification-container">
+    <p class="email-verification-text">
+        {{ __('Your email address is unverified.') }}
+    </p>
+    <button form="send-verification" class="resend-verification-button">
+        {{ __('Click here to re-send the verification email.') }}
+    </button>
+</div>
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            {{ __('Click here to re-send the verification email.') }}
-                        </button>
-                    </p>
 
                     @if (session('status') === 'verification-link-sent')
                         <p class="mt-2 font-medium text-sm text-green-600">
@@ -52,7 +46,7 @@
         </div>
 
         <div class="flex items-center gap-4">
-        <button class="btn profile-photo-btn">{{ __('Save') }}</button>
+            <button class="btnn profile-photo-btn">{{ __('Save') }}</button>
 
             @if (session('status') === 'profile-updated')
                 <p
