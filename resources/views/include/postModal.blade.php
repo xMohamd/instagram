@@ -1,6 +1,6 @@
 <ul class="list-unstyled" data-post>
     <div class="item" data-bs-target="#product-modal-{{ $post->id }}" data-bs-toggle="modal" style="width: 100%;">
-        <img class="img-fluid item_img" src="{{ asset('../' . $post->media->url) }}" alt="">
+        <img class="img-fluid item_img" src="{{ $post->media->url }}" alt="">
         <div class="bg">
             <div class="likes">
                 <img src="{{ asset('images/heart_white.png') }}">

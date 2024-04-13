@@ -35,7 +35,7 @@ Route::get('/chat', fn () => view('chat'))->name('chat');
 
 // Authenticated routes
 Route::middleware('auth')->group(function () {
-    Route::get('/', [PostController::class, 'index'])->name('home');
+    Route::get('/', HomeController::class, '__invoke')->name('home');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

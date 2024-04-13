@@ -648,7 +648,7 @@ async function addPost() {
 
         const data = await response.json();
         console.log("Post added successfully:", data);
-        // window.location.reload();
+        window.location.reload();
     } catch (error) {
         console.error("Error adding post:", error);
     }
