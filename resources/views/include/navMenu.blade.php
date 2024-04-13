@@ -251,6 +251,6 @@
         <a href="{{route('reels')}}"><img src="{{asset('images/video.png')}}"></a>
         <a href="#" data-bs-toggle="modal" data-bs-target="#create_modal"><img src="{{asset('images/tab.png')}}"></a>
         <a href="{{ route('profile', ['id' => Auth::user()->id]) }}"><img class="circle story"
-                src="{{asset('images/profile_img.jpg')}}"></a>
+                src="{{ asset('../'.Auth::user()->avatar) }}"></a>
     </div>
 </div>

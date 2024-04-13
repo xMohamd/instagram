@@ -32,7 +32,7 @@ class PostController extends Controller
             $tags = [];
             preg_match_all('/#\w+/', $post->caption, $matches);
             $tags = array_unique($matches[0]);
-
+            $post->caption = str_replace($matches[0], "", $post->caption);
 
 
             $path = [];
@@ -58,7 +58,7 @@ class PostController extends Controller
             if (count($tags) > 0) {
                 foreach ($tags as $tagString) {
                     $hashtag = ltrim($tagString, '#');
-                    $tag = Tag::firstOrCreate(['tag' => $tagString]);
+                    $tag = Tag::firstOrCreate(['tag' => $hashtag]);
                     $post->tags()->attach($tag->id);
                 }
             }
