@@ -13,3 +13,12 @@ if (unfollowBtn)
     unfollowBtn.addEventListener('click', () => {
         unfollowForm.submit();
     })
+
+
+const editProfileForm = document.getElementById("editProfileForm");
+const editProfileBtn = document.getElementById('editProfileBtn')
+console.log(editProfileForm);
+if (editProfileBtn)
+    editProfileBtn.addEventListener('click', () => {
+        editProfileForm.submit();
+    })

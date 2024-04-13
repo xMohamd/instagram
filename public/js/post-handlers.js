@@ -27,7 +27,7 @@ async function handleComment(event) {
         commentItem.classList.add("row");
         commentItem.innerHTML = `
                 <div class="col-1">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="22" alt="Avatar" loading="lazy" />
+                    <img src="../${commentData.user.avatar}" class="rounded-circle" height="22" alt="Avatar" loading="lazy" />
                 </div>
                 <div class="p-0 col-9">
                     <p class="p-0 my-0 fw-bold">${commentData.user.username} - <small>Now</small></p>

@@ -3,13 +3,13 @@
         <p class="card-title fs-5">
             <a class="d-flex align-items-center link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                 href="{{route('profile', ['id' => $post->user->id])}}" role="button">
-                <img src="{{$post->user->avatar}}" class="rounded-circle" height="22" alt="Avatar"
+                <img src="{{ asset('../'.$post->user->avatar) }}" class="rounded-circle" height="22" alt="Avatar"
                     loading="lazy" />&nbsp {{ $post->user->username }}
             </a>
             <span class="text-body-secondary fs-6">{{ $post->created_at->diffForHumans() }}</span>
         </p>
     </div>
-    <img src="{{ $post->media->url }}" class="p-0 w-100 img-fluid rounded-1"
+    <img src="{{ asset('../'.$post->media->url) }}" class="p-0 w-100 img-fluid rounded-1"
         data-bs-target="#product-modal-{{ $post->id }}" data-bs-toggle="modal" />
     <div class="px-0 card-body">
         <div class="row d-flex justify-content-between align-content-center">
@@ -68,15 +68,15 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6 h-100">
-                            <img src="{{ $post->media->url }}" class="p-0 w-100 img-fluid" />
+                            <img src="{{ asset('../'.$post->media->url) }}" class="p-0 w-100 img-fluid" />
                         </div>
                         <div class="col-6">
                             <div class="px-0 bg-white border-0">
                                 <p class="fs-5">
                                     <a class="d-flex align-items-center link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                                         href="#" role="button">
-                                        <img src="{{$post->user->avatar}}" class="rounded-circle" height="22"
-                                            alt="Avatar" loading="lazy" />&nbsp {{
+                                        <img src="{{ asset('../'.$post->user->avatar) }}" class="rounded-circle"
+                                            height="22" alt="Avatar" loading="lazy" />&nbsp {{
                                         $post->user->username }}
                                     </a>
                                     <span class="text-body-secondary fs-6">{{$post->created_at->diffForHumans()}}</span>
@@ -145,8 +145,8 @@
                                         @foreach ($post->comments as $comment)
                                         <div class="row" data-comment="{{ $comment->id }}">
                                             <div class="col-1">
-                                                <img src="{{$comment->user->avatar}}" class="rounded-circle" height="22"
-                                                    alt="Avatar" loading="lazy" />
+                                                <img src="{{ asset('../'.$comment->user->avatar) }}"
+                                                    class="rounded-circle" height="22" alt="Avatar" loading="lazy" />
                                             </div>
                                             <div class="p-0 col-9">
                                                 <p class="p-0 my-0 fw-bold">{{ $comment->user->username }} -

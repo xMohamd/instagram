@@ -9,7 +9,7 @@
         <div class="cart">
             <div class="img">
                 <img class="img-fluid item_img rounded-circle" style="width: 200px; height: 200px;"
-                    src="{{$posts[0]->media->url}}" alt="">
+                    src="{{asset('../'.$posts[0]->media->url)}}" alt="">
             </div>
             <div class="info">
                 <h2 class="name">
