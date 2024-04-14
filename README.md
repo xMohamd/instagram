@@ -2,9 +2,8 @@
 
 This project is an Instagram clone that aims to replicate the core features and functionalities of the popular social media platform. It includes features such as user authentication, posting images, following other users, liking and commenting on posts, and more.
 
-<p align="center">
-  <video src=".github/assets/demo.mp4"></video>
-</p>
+https://github.com/xMohamd/instagram/assets/10786768/404515d7-1ce7-456c-9878-14043d7f61cc
+
 
 ## Technologies Used
 
