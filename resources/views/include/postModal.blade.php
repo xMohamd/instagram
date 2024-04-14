@@ -1,6 +1,6 @@
 <ul class="list-unstyled" data-post>
     <div class="item" data-bs-target="#product-modal-{{ $post->id }}" data-bs-toggle="modal" style="width: 100%;">
-        <img class="img-fluid item_img" src="{{ $post->media->url }}" alt="">
+        <img class="img-fluid item_img" src="{{ asset('../' . $post->media->url) }}" alt="">
         <div class="bg">
             <div class="likes">
                 <img src="{{ asset('images/heart_white.png') }}">
@@ -19,7 +19,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6 h-100">
-                            <img src="{{ $post->media->url }}" class="p-0 w-100 img-fluid" />
+                            <img src="{{ asset('../' . $post->media->url) }}" class="p-0 w-100 img-fluid" />
                         </div>
                         <div class="col-6">
                             <div class="px-0 bg-white border-0">
@@ -30,8 +30,8 @@
                                             height="22" alt="Avatar" loading="lazy" />&nbsp
                                         {{ $post->user->username }}
                                     </a>
-                                    <span
-                                        class="text-body-secondary fs-6">{{ $post->created_at->diffForHumans() }}</span>
+                                    <span class="text-body-secondary fs-6">{{ $post->created_at->diffForHumans()
+                                        }}</span>
                                 </p>
                             </div>
                             <div class="px-0">
@@ -85,7 +85,7 @@
                                     {{ $post->caption }}
                                     <br />
                                     @foreach ($post->tags as $tag)
-                                        <a href="{{ '/hashtag/' . $tag->tag }}">#{{ $tag->tag }}</a>
+                                    <a href="{{ '/hashtag/' . $tag->tag }}">#{{ $tag->tag }}</a>
                                     @endforeach
                                 </p>
                                 <form class="mb-2" class="comment-form" data-post-comment="{{ $post->id }}">
@@ -96,38 +96,34 @@
                                 <div class="row">
                                     <div class="col-12 comments-list">
                                         @foreach ($post->comments as $comment)
-                                            <div class="row" data-comment="{{ $comment->id }}">
-                                                <div class="col-1">
-                                                    <img src="{{ asset('../' . $comment->user->avatar) }}"
-                                                        class="rounded-circle" height="22" alt="Avatar"
-                                                        loading="lazy" />
-                                                </div>
-                                                <div class="p-0 col-9">
-                                                    <p class="p-0 my-0 fw-bold">{{ $comment->user->username }} -
-                                                        <small>{{ $comment->created_at->diffForHumans() }}</small>
-                                                    </p>
-                                                    <p class="p-0 my-0 comment-text">{{ $comment->comment }}
-                                                    </p>
-                                                    <hr>
-                                                </div>
-                                                @if (Auth::id() == $comment->user_id)
-                                                    <div class="col-1">
-                                                        <div class="btn-group">
-                                                            <button
-                                                                class="btn btn-outline-secondary btn-sm dropdown-toggle"
-                                                                type="button" data-bs-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a class="dropdown-item" data-comment-edit>Edit</a>
-                                                                </li>
-                                                                <li><a class="dropdown-item"
-                                                                        data-comment-delete>Delete</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                @endif
+                                        <div class="row" data-comment="{{ $comment->id }}">
+                                            <div class="col-1">
+                                                <img src="{{ asset('../' . $comment->user->avatar) }}"
+                                                    class="rounded-circle" height="22" alt="Avatar" loading="lazy" />
                                             </div>
+                                            <div class="p-0 col-9">
+                                                <p class="p-0 my-0 fw-bold">{{ $comment->user->username }} -
+                                                    <small>{{ $comment->created_at->diffForHumans() }}</small>
+                                                </p>
+                                                <p class="p-0 my-0 comment-text">{{ $comment->comment }}
+                                                </p>
+                                                <hr>
+                                            </div>
+                                            @if (Auth::id() == $comment->user_id)
+                                            <div class="col-1">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" data-comment-edit>Edit</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item" data-comment-delete>Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
                                         @endforeach
                                     </div>
                                 </div>

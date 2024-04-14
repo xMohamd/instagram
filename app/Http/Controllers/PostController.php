@@ -20,57 +20,52 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                'files' => 'required',
-            ]);
+        $request->validate([
+            'files' => 'required',
+        ]);
 
-            $post = new Post();
-            $post->caption = $request->input('caption');
-            $post->user_id = Auth::id();
+        $post = new Post();
+        $post->caption = $request->input('caption');
+        $post->user_id = Auth::id();
 
-            $tags = [];
-            preg_match_all('/#\w+/', $post->caption, $matches);
-            $tags = array_unique($matches[0]);
-            $post->caption = str_replace($matches[0], "", $post->caption);
+        $tags = [];
+        preg_match_all('/#\w+/', $post->caption, $matches);
+        $tags = array_unique($matches[0]);
+        $post->caption = str_replace($matches[0], "", $post->caption);
 
 
-            $path = [];
-            $files = $request->file('files');
-            foreach ($files as $file) {
-                $media = new Media();
-                if ($file->getClientOriginalExtension() === 'mp4' || $file->getClientOriginalExtension() === 'mov' || $file->getClientOriginalExtension() === 'avi' || $file->getClientOriginalExtension() === 'mkv') {
-                    $media->type = 'video';
-                } else {
-                    $media->type = 'image';
-                }
-                $media->name = $file->getClientOriginalName();
-                $media->size = $file->getSize();
-                $media->mime_type = $file->getClientOriginalExtension();
-                $path[] = "https://insta-proj.s3.amazonaws.com/" . $file->store('public/images');
-                $media->url = end($path);
-                $media->save();
-
-                $post->media_id = $media->id;
-                $post->save();
+        $path = [];
+        $files = $request->file('files');
+        foreach ($files as $file) {
+            $media = new Media();
+            if ($file->getClientOriginalExtension() === 'mp4' || $file->getClientOriginalExtension() === 'mov' || $file->getClientOriginalExtension() === 'avi' || $file->getClientOriginalExtension() === 'mkv') {
+                $media->type = 'video';
+            } else {
+                $media->type = 'image';
             }
+            $media->name = $file->getClientOriginalName();
+            $media->size = $file->getSize();
+            $media->mime_type = $file->getClientOriginalExtension();
+            $path[] = $file->store('images');
+            $file->move(public_path('images'), $media->name);
+            $media->url = 'images/' . $media->name;
+            $media->save();
 
-            if (count($tags) > 0) {
-                foreach ($tags as $tagString) {
-                    $hashtag = ltrim($tagString, '#');
-                    $tag = Tag::firstOrCreate(['tag' => $hashtag]);
-                    $post->tags()->attach($tag->id);
-                }
-            }
-
-            return response()->json([
-                'path' => $path,
-                'message' => 'File uploaded successfully'
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ]);
+            $post->media_id = $media->id;
+            $post->save();
         }
+
+        if (count($tags) > 0) {
+            foreach ($tags as $tagString) {
+                $hashtag = ltrim($tagString, '#');
+                $tag = Tag::firstOrCreate(['tag' => $hashtag]);
+                $post->tags()->attach($tag->id);
+            }
+        }
+
+        return response()->json([
+            'path' => $path,
+            'message' => 'File uploaded successfully'
+        ]);
     }
 }
