@@ -2,6 +2,9 @@
 
 This project is an Instagram clone that aims to replicate the core features and functionalities of the popular social media platform. It includes features such as user authentication, posting images, following other users, liking and commenting on posts, and more.
 
+https://github.com/xMohamd/instagram/assets/10786768/404515d7-1ce7-456c-9878-14043d7f61cc
+
+
 ## Technologies Used
 
 -   Frontend: HTML, CSS, SCSS, JavaScript, blade
@@ -84,11 +87,11 @@ Access the application at `http://localhost:8000`.
                 alt="Marwan Mohamed"
             /><br /><sub><b>Marwan Mohamed</b></sub> </a
             ><br />
-            <a href="https://github.com/xMohamd/instagram/commits?author=marwan-mohamed12" title="Documentation">📖</a> 
-             <a href="#" title="Tools">🔧</a> 
+            <a href="https://github.com/xMohamd/instagram/commits?author=marwan-mohamed12" title="Documentation">📖</a>
+             <a href="#" title="Tools">🔧</a>
              <a href="#" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a>
              <a href="#" title="Maintenance">🚧</a>
-            <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Ajakebolam" title="Reviewed Pull Requests">👀</a> 
+            <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Ajakebolam" title="Reviewed Pull Requests">👀</a>
         </td>
         <td align="center" valign="top" width="15%">
             <a href="https://github.com/NourhanRadwan145">
