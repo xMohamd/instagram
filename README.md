@@ -78,51 +78,85 @@ Access the application at `http://localhost:8000`.
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%">
-        <a href="https://github.com/marwan-mohamed12">
-          <img src="https://avatars.githubusercontent.com/u/40841193?v=4" width="100px;" alt="Marwan Mohamed" /><br /><sub><b>Marwan Mohamed</b></sub>
-        </a><br />
-        <a href="#" title="Answering Questions">💬</a> 
-        <a href="#" title="Documentation">📖</a> 
-        <a href="#" title="Reviewed Pull Requests">👀</a> 
-        <a href="#" title="Talks">📢</a>
-      </td>
-      <td align="center" valign="top" width="15%">
-        <a href="https://github.com/NourhanRadwan145">
-          <img src="https://avatars.githubusercontent.com/u/153069096?v=4" width="105px;" alt="Nourhan Radwan" /><br /><sub><b>Nourhan Radwan </b></sub>
-        </a><br />
-        <a href="#" title="Answering Questions">💬</a> 
-        <a href="#" title="Documentation">📖</a> 
-        <a href="#" title="Reviewed Pull Requests">👀</a> 
-        <a href="#" title="Talks">📢</a>
-      </td>
         <td align="center" valign="top" width="14.28%">
-        <a href="https://github.com/MahmoudDabbous">
-          <img src="https://avatars.githubusercontent.com/u/109554499?v=4" width="100px;" alt="Mahmoud Dabbous" /><br /><sub><b>Mahmoud Dabbous</b></sub>
-        </a><br />
-        <a href="#" title="Answering Questions">💬</a> 
-        <a href="#" title="Documentation">📖</a> 
-        <a href="#" title="Reviewed Pull Requests">👀</a> 
-        <a href="#" title="Talks">📢</a>
-      </td>
-        <td align="center" valign="top" width="14.28%">
-        <a href="https://github.com/xMohamd">
-          <img src="https://avatars.githubusercontent.com/u/10786768?v=4" width="100px;" alt="Mohamed" /><br /><sub><b>Mohamed</b></sub>
-        </a><br />
-        <a href="#" title="Answering Questions">💬</a> 
-        <a href="#" title="Documentation">📖</a> 
-        <a href="#" title="Reviewed Pull Requests">👀</a> 
-        <a href="#" title="Talks">📢</a>
+            <a href="https://github.com/marwan-mohamed12">
+            <img
+                src="https://avatars.githubusercontent.com/u/40841193?v=4"
+                width="100px;"
+                alt="Marwan Mohamed"
+            /><br /><sub><b>Marwan Mohamed</b></sub> </a
+            ><br />
+            <a href="https://github.com/xMohamd/instagram/commits?author=marwan-mohamed12" title="Documentation">📖</a> 
+             <a href="#" title="Tools">🔧</a> 
+             <a href="#" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a>
+             <a href="#" title="Maintenance">🚧</a>
+            <a href="https://github.com/all-contributors/all-contributors/pulls?q=is%3Apr+reviewed-by%3Ajakebolam" title="Reviewed Pull Requests">👀</a> 
         </td>
-              <td align="center" valign="top" width="14.28%">
-        <a href="https://github.com/MohamedAliEsmaill">
-          <img src="https://avatars.githubusercontent.com/u/76743957?v=4" width="100px;" alt="Mohamed Ali" /><br /><sub><b>Mohamed Ali</b></sub>
-        </a><br />
-        <a href="#" title="Answering Questions">💬</a> 
-        <a href="#" title="Documentation">📖</a> 
-        <a href="#" title="Reviewed Pull Requests">👀</a> 
-        <a href="#" title="Talks">📢</a>
-      </td>
+        <td align="center" valign="top" width="15%">
+            <a href="https://github.com/NourhanRadwan145">
+            <img
+                src="https://avatars.githubusercontent.com/u/153069096?v=4"
+                width="105px;"
+                alt="Nourhan Radwan"
+            /><br /><sub><b>Nourhan Radwan </b></sub> </a
+            ><br />
+            <a href="#" title="Answering Questions">💬</a>
+            <a href="#" title="Documentation">📖</a>
+            <a href="#" title="Reviewed Pull Requests">👀</a>
+            <a href="#" title="Talks">📢</a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/MahmoudDabbous">
+            <img
+                src="https://avatars.githubusercontent.com/u/109554499?v=4"
+                width="100px;"
+                alt="Mahmoud Dabbous"
+            /><br /><sub><b>Mahmoud Dabbous</b></sub> </a
+            ><br />
+            <a href="#" title="Answering Questions">💬</a>
+            <a href="#" title="Documentation">📖</a>
+            <a href="#" title="Reviewed Pull Requests">👀</a>
+            <a href="#" title="Talks">📢</a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/xMohamd">
+            <img
+                src="https://avatars.githubusercontent.com/u/10786768?v=4"
+                width="100px;"
+                alt="Mohamed"
+            /><br /><sub><b>Mohamed</b></sub> </a
+            ><br />
+            <a href="#" title="Answering Questions">💬</a>
+            <a href="#" title="Documentation">📖</a>
+            <a href="#" title="Reviewed Pull Requests">👀</a>
+            <a href="#" title="Talks">📢</a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/MohamedAliEsmaill">
+            <img
+                src="https://avatars.githubusercontent.com/u/76743957?v=4"
+                width="100px;"
+                alt="Mohamed Ali"
+            /><br /><sub><b>Mohamed Ali</b></sub> </a
+            ><br />
+            <a href="#" title="Answering Questions">💬</a>
+            <a href="#" title="Documentation">📖</a>
+            <a href="#" title="Reviewed Pull Requests">👀</a>
+            <a href="#" title="Talks">📢</a>
+        </td>
+        <td align="center" valign="top" width="14.28%">
+            <a href="https://github.com/MohamedAliEsmaill">
+            <img
+                src="https://avatars.githubusercontent.com/u/87963230?v=4"
+                width="100px;"
+                alt="Mohamed Ali"
+            /><br /><sub><b>ZeinabAbdelghaffar</b></sub> </a
+            ><br />
+            <a href="#" title="Answering Questions">💬</a>
+            <a href="#" title="Documentation">📖</a>
+            <a href="#" title="Reviewed Pull Requests">👀</a>
+            <a href="#" title="Talks">📢</a>
+        </td>
     </tr>
   </tbody>
 </table>
