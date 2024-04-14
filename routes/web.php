@@ -4,12 +4,10 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProfileController;
-use App\Models\Follow;
-use App\Models\Media;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,20 +20,21 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-// Public routes
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::get('/profile/{id}',  [UserProfileController::class, 'index'])->name('profile');
-Route::post('/follow', [FollowController::class, 'store'])->name('follow.store');
-Route::delete('/unfollow/{follower_id}/{followed_id}', [FollowController::class, 'destroy'])->name('follow.destroy');
-Route::get('/explore', fn () => view('explore'))->name('explore');
-Route::get('/reels', fn () => view('reels'))->name('reels');
-Route::get('/chat', fn () => view('chat'))->name('chat');
 
 // Authenticated routes
-Route::middleware('auth')->group(function () {
-    Route::get('/', HomeController::class)->name('home');
+Route::middleware('auth', 'verified')->group(function () {
+    Route::get('/', HomeController::class, '__invoke')->name('home');
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/hashtag/{hashtag}', [TagController::class, 'hash'])->name('hash');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/{id}',  [UserProfileController::class, 'index'])->name('profile');
+    Route::post('/follow', [FollowController::class, 'store'])->name('follow.store');
+    Route::delete('/unfollow/{follower_id}/{followed_id}', [FollowController::class, 'destroy'])->name('follow.destroy');
+    Route::get('/explore', fn () => view('explore'))->name('explore');
+    Route::get('/reels', fn () => view('reels'))->name('reels');
+    Route::get('/chat', fn () => view('chat'))->name('chat');
 });
 
 // Admin routes

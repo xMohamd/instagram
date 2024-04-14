@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Notifications\Auth\QueuedResetPassword;
+use App\Notifications\Auth\QueuedVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -31,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'gender',
         'is_admin'
     ];
-    public $timestamps =false;
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -85,11 +86,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendPasswordResetNotification($token): void
     {
-        $this->notify(new ResetPasswordNotification($token));
+        $this->notify(new QueuedResetPassword($token));
     }
 
     public function savedPosts()
     {
         return $this->belongsToMany(Post::class, 'saved_posts');
+    }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new QueuedVerifyEmail);
     }
 }

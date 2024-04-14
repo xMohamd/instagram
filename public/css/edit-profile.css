@@ -1,20 +1,27 @@
+.header-container {
+  background-color: #f9fafb; 
+  border-bottom: 2px solid #e2e8f0;
+  padding: 20px; 
+  margin-left: 280px; 
+  width: 1100px;
+}
+
+.header-text {
+  font-size: 24px;
+  font-weight: bold; 
+  color: #2b3b57;
+}
+
 h2 {
-  font-weight:900;
+  font-weight:600;
   font-size: 18px;
+  margin-top: 35px;
   margin-bottom: 30px;
+  color: #737373;
 }
 
-.header {
-  background-color: #f8f9fa;
-  border-bottom: 2px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  width: 1300px;
-  margin: auto; 
-}
-
-.header h2 {
-  font-size: 1.5rem;
+hr {
+  width: 1100px;
 }
 
 label {
@@ -29,7 +36,7 @@ label {
     display: flex;
     align-items: center;
     border-radius: 20px;
-    width: 1200px;
+    width: 1100px;
     margin-bottom: 20px;
 }
 
@@ -49,14 +56,9 @@ label {
 .profile-real-name {
     margin: 5px 0; 
 }
-.btn.profile-photo-btn {
-    padding: 6px 12px;
-    font-size: 16px;
-    width: 130px;
-}
 
 .profile-user-name {
-  font-size: 16px;
+  font-size: 16px !important; 
   color: #000000;
   font-weight: bold;
 }
@@ -67,7 +69,7 @@ label {
 }
 
 .profile-bio input,.profile-website input,.profile-gender select{
-  width: 1200px;
+  width: 1100px;
   height: 40px;
   padding: 10px;
   border-radius: 5px;
@@ -79,7 +81,7 @@ label {
   margin-bottom: 10px;
 }
 
-.btn {
+.btnn {
   display: inline-block;
   padding: 10px 20px;
   background-color: #0095f6;
@@ -91,10 +93,65 @@ label {
   width: 200px;
 }
 
-.btn:hover {
+.btnn:hover {
   background-color: #0056b3;
 }
 
+.profile-photo-btn {
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: normal; 
+  width: 130px;
+}
+
 main {
-  margin: 50px; 
+  margin: 50px;
+}
+
+.email-verification-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border: 1px solid #cbd5e0;
+  border-radius: 5px;
+  width: 1100px;
+}
+
+.email-verification-text {
+  font-size: 0.875rem; 
+  line-height: 1.25rem; 
+  color: #4b5563; 
+  margin-bottom: 10px;
+}
+
+.resend-verification-button {
+  padding: 4px 8px; 
+  font-size: 0.875rem;
+  line-height: 1.25rem; 
+  color: #2563eb; 
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer; 
+  text-decoration: underline; 
+}
+
+.resend-verification-button:hover {
+  color: #1d4ed8; 
+}
+
+.danger-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #fff;
+  background-color: #dc2626;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.danger-button:hover {
+  background-color: #b91c1c; 
 }

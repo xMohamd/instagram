@@ -15,20 +15,22 @@
     @method('DELETE')
 </form>
 
+<form id="editProfileForm" action="{{ route('profile.edit') }}" method="GET" style="display: none;">
+    @csrf
+</form>
+
 
 <div class="profile_container">
     <div class="profile_info">
         <div class="cart">
             <div class="img">
-                <img src="{{$user->avatar}}" alt="">
+                <img src="{{ asset('../'.$user->avatar) }}" alt="">
             </div>
             <div class="info">
                 <p class="name">
                     {{$user->username}}
                     @if (Auth::user()->username == $user->username)
-                    <button class="edit_profile">
-                        Edit profile
-                    </button>
+                    <button type="submit" id="editProfileBtn" class="edit_profile">Edit profile</button>
                     @else
                     @if (count($followers->where('username', Auth::user()->username)) != 0)
                     <button id="unfollowFormBtn" class="edit_profile followBtn">Following</button>
@@ -65,7 +67,7 @@
     <div class="highlights">
         <div class="highlight">
             <div class="img">
-                <img src="{{$user->avatar}}" alt="">
+                <img src="{{ asset('../'.$user->avatar) }}" alt="user image">
             </div>
             <p>Story</p>
         </div>
@@ -161,7 +163,7 @@
                 <ul class="list-group list-unstyled">
                     @foreach($followers as $follower)
                     <li class="list-group-item border-0 custom-list-item">
-                        <img src="{{$follower->avatar}}" alt="Image Icon" class="img-icon rounded-circle"
+                        <img src="{{ asset('../'.$follower->avatar) }}" alt="Image Icon" class="img-icon rounded-circle"
                             style="width: 50px; height: 50px;">
                         <a href="{{route('profile', ['id' => $follower->id]) }}"
                             class="text-decoration-none">{{$follower->username }}</a>
@@ -185,7 +187,7 @@
                 <ul class="list-group list-unstyled">
                     @foreach($following as $follow)
                     <li class="list-group-item border-0 custom-list-item">
-                        <img src="{{$follow->avatar}}" alt="Image Icon" class="img-icon rounded-circle"
+                        <img src="{{ asset('../'.$follow->avatar) }}" alt="Image Icon" class="img-icon rounded-circle"
                             style="width: 50px; height: 50px;">
                         <a href="{{route('profile', ['id' => $follow->id]) }}"
                             class="text-decoration-none">{{$follow->username }}</a>

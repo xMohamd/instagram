@@ -41,6 +41,7 @@ class PostRepository implements RepositoryContract
                 ->from('follows')
                 ->where('follower_id', Auth::id());
         })
+            ->orWhere('user_id', Auth::id())
             ->with([
                 'user',
                 'likes',
@@ -59,7 +60,6 @@ class PostRepository implements RepositoryContract
 
         return $posts;
     }
-
     public function find($id)
     {
         return Post::find($id);

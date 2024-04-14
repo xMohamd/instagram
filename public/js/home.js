@@ -25,7 +25,7 @@ searchInput.addEventListener("input", async () => {
                 <div class="cart">
                     <div>
                         <div class="img">
-                            <img src="${avatar}" alt="">
+                            <img src="../${avatar}" alt="">
                         </div>
                         <div class="info">
                             <p class="name">${name}</p>
