@@ -2,8 +2,8 @@
 
 This project is an Instagram clone that aims to replicate the core features and functionalities of the popular social media platform. It includes features such as user authentication, posting images, following other users, liking and commenting on posts, and more.
 
-    - Demo Video
-        <video controls src="insta2 - Made with Clipchamp.mp4" title="Title"></video>
+ - ![Demo Video](https://github.com/xMohamd/instagram/blob/c3a1f5db79424fae292216c8026a69f8c1bb40f7/insta2%20-%20Made%20with%20Clipchamp.mp4)
+
 ## Technologies Used
 
 -   Frontend: HTML, CSS, SCSS, JavaScript, blade
