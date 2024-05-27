@@ -4,12 +4,13 @@ namespace App\Http\Controllers\API\Posts;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PostRepository;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
     public function __construct(
-        private PostRepository $postRepository
+        private PostService $postRepository
     ) {
     }
 
