@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\PostRepository;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function __construct(
-        protected PostRepository $postRepository
+        protected PostService $postService
     ) {
     }
 
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $posts = $this->postRepository->paginate();
+        $posts = $this->get();
 
         return view('home', compact('posts'));
     }

@@ -54,10 +54,6 @@ class PostRepository implements RepositoryContract
             ->latest()
             ->simplePaginate($perPage);
 
-        $posts->each(function ($post) {
-            $post->comments = $post->comments->take(3);
-        });
-
         return $posts;
     }
     public function find($id)

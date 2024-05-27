@@ -8,9 +8,15 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use App\Services\PostService;
 
 class PostController extends Controller
 {
+
+    public function __construct(private PostService $postService)
+    {
+    }
+
     public function index(Request $request)
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(3);
@@ -25,43 +31,7 @@ class PostController extends Controller
                 'files' => 'required',
             ]);
 
-            $post = new Post();
-            $post->caption = $request->input('caption');
-            $post->user_id = Auth::id();
-
-            $tags = [];
-            preg_match_all('/#\w+/', $post->caption, $matches);
-            $tags = array_unique($matches[0]);
-            $post->caption = str_replace($matches[0], "", $post->caption);
-
-
-            $path = [];
-            $files = $request->file('files');
-            foreach ($files as $file) {
-                $media = new Media();
-                if ($file->getClientOriginalExtension() === 'mp4' || $file->getClientOriginalExtension() === 'mov' || $file->getClientOriginalExtension() === 'avi' || $file->getClientOriginalExtension() === 'mkv') {
-                    $media->type = 'video';
-                } else {
-                    $media->type = 'image';
-                }
-                $media->name = $file->getClientOriginalName();
-                $media->size = $file->getSize();
-                $media->mime_type = $file->getClientOriginalExtension();
-                $path[] = "https://insta-proj.s3.amazonaws.com/" . $file->store('public/images');
-                $media->url = end($path);
-                $media->save();
-
-                $post->media_id = $media->id;
-                $post->save();
-            }
-
-            if (count($tags) > 0) {
-                foreach ($tags as $tagString) {
-                    $hashtag = ltrim($tagString, '#');
-                    $tag = Tag::firstOrCreate(['tag' => $hashtag]);
-                    $post->tags()->attach($tag->id);
-                }
-            }
+            $path = $this->postService->create($request->caption, $request->file('files'));
 
             return response()->json([
                 'path' => $path,
