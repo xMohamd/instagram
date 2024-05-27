@@ -5,12 +5,12 @@ namespace App\Http\Controllers\API\Posts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
-use App\Repositories\PostRepository;
+use App\Services\PostService;
 
 class CommentController extends Controller
 {
     public function __construct(
-        private PostRepository $postRepository
+        private PostService $postService
     ) {
     }
 
@@ -21,7 +21,7 @@ class CommentController extends Controller
     {
         $request->validated();
 
-        $comment = $this->postRepository->comment($post_id, [
+        $comment = $this->postService->comment($post_id, [
             'comment' => $request->comment,
             'user_id' => $request->user()->id,
         ]);
@@ -36,7 +36,7 @@ class CommentController extends Controller
     {
         $request->validated();
 
-        $this->postRepository->updateComment($comment_id, [
+        $this->postService->updateComment($comment_id, [
             'comment' => $request->comment,
         ]);
 
@@ -48,7 +48,7 @@ class CommentController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->postRepository->deleteComment($id);
+        $this->postService->deleteComment($id);
 
         return response()->json(['message' => 'Comment deleted successfully'], 200);
     }

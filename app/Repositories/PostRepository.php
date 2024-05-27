@@ -78,39 +78,6 @@ class PostRepository implements RepositoryContract
         return Post::destroy($id);
     }
 
-    public function like($id)
-    {
-        $post = Post::findOrFail($id);
-
-        return $post->likes()->attach(Auth::id());
-    }
-
-    public function unlike($id)
-    {
-        $post = Post::findOrFail($id);
-
-        return $post->likes()->detach(Auth::id());
-    }
-
-    public function comment($id, $data)
-    {
-        $post = Post::findOrFail($id);
-
-        return $post->comments()->create($data);
-    }
-
-    public function updateComment($id, $data)
-    {
-        $comment = Comment::findOrFail($id);
-
-        return $comment->update($data);
-    }
-
-    public function deleteComment($id)
-    {
-        return Comment::destroy($id);
-    }
-
     public function save($id)
     {
         $post = Post::findOrFail($id);

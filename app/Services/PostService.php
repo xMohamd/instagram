@@ -68,4 +68,70 @@ class PostService
 
         return $posts;
     }
+
+    public function show($id)
+    {
+        return $this->postRepository->find($id);
+    }
+
+    public function update($id, $caption)
+    {
+        $post = $this->postRepository->find($id);
+        $post->caption = $caption;
+        $post->save();
+
+        return $post;
+    }
+
+    public function delete($id)
+    {
+        $post = $this->postRepository->find($id);
+        $post->delete();
+
+        return $post;
+    }
+
+    public function like($id)
+    {
+        $post = $this->postRepository->find($id);
+        $post->likes()->attach(Auth::id());
+
+        return $post;
+    }
+
+    public function unlike($id)
+    {
+        $post = $this->postRepository->find($id);
+        $post->likes()->detach(Auth::id());
+
+        return $post;
+    }
+
+    public function comment($id, $comment)
+    {
+        $post = $this->postRepository->find($id);
+        $post->comments()->create([
+            'user_id' => Auth::id(),
+            'comment' => $comment,
+        ]);
+
+        return $post;
+    }
+
+    public function deleteComment($id)
+    {
+        $post = $this->postRepository->find($id);
+        $post->comments()->where('id', $id)->delete();
+
+        return $post;
+    }
+
+    public function updateComment($id, $comment)
+    {
+        $post = $this->postRepository->find($id);
+        $post->comments()->where('id', $id)->update($comment);
+
+        return $post;
+    }
+
 }
